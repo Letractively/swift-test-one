@@ -37,6 +37,7 @@ namespace SqlServerDAL
         public bool addCinecism(Model.Cinecism cinecism)
         {
             List<Model.Cinecism> lst = new List<Model.Cinecism>();
+            cinecism.CommTime = DateTime.Now;//获取系统时间
             string sql = "INSERT INTO Cinecisms Values (CinecismID=" + cinecism.CinecismID + ",UserName=" + cinecism.UserName + ",Comment=" + cinecism.Comment + ",CommentTime=" + cinecism.CommTime + ",MovieID=" + cinecism.MovieID + ")";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;

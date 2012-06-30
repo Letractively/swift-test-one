@@ -36,6 +36,7 @@ namespace SqlServerDAL
         public bool addCComment(Model.CComment ccomment)
         {
             List<Model.CComment> lst = new List<Model.CComment>();
+            ccomment.CommTime = DateTime.Now;//获取系统时间
             string sql = "INSERT INTO CComments Values (CComentID=" + ccomment.CCommentID + ",CinemaID=" + ccomment.CinemaID + ",UserName=" + ccomment.UserName + ",Comment=" + ccomment.Comment + ",CommTime=" + ccomment.CommTime + ",Grade=" + ccomment.Grade + ")";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
