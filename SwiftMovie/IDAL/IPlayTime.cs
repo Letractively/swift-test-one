@@ -16,19 +16,19 @@ namespace IDAL
         /// </summary>
         /// <param name="playTimeID">上映时间段ID</param>
         /// <returns>删除成功为true，否则flase</returns>
-        bool removePlaytime(int playTimeID);
+        bool removePlaytimeByplayTimeID(int playTimeID);
         /// <summary>
         /// 删除上映时间段
         /// </summary>
         /// <param name="movieID">上映电影的ID</param>
         /// <returns>删除成功为true，否则flase</returns>
-        bool removePlaytime(int movieID);
+        bool removePlaytimeBymovieID(int movieID);
         /// <summary>
         /// 删除上映时间段
         /// </summary>
         /// <param name="cinemaID">上映影院的ID</param>
         /// <returns>删除成功为true，否则flase</returns>
-        bool removePlaytime(int cinemaID);
+        bool removePlaytimeBycinemaID(int cinemaID);
         bool editPlaytime(PlayTime playTime);
     }
 }

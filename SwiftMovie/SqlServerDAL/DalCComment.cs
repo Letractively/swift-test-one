@@ -14,7 +14,7 @@ namespace SqlServerDAL
             DataTable dt = DBUtility.SqlHelper.executeTable("select * from CComments", CommandType.Text, null);
             foreach (DataRow item in dt.Rows)
             {
-                Model.CComment emp = new Model.CComment() { CCommentID = int.Parse(item[0].ToString()), CinemaID = int.Parse(item[1].ToString()), CommTime = DateTime.Parse(item[2].ToString()), Grade = float.Parse(item[3].ToString()), Comment = item[4].ToString(), UserName = item[5].ToString() };
+                Model.CComment emp = new Model.CComment() { CCommentID = int.Parse(item[0].ToString()), CinemaID = int.Parse(item[1].ToString()), CommTime = DateTime.Parse(item[4].ToString()), Grade = float.Parse(item[5].ToString()), Comment = item[3].ToString(), UserName = item[2].ToString() };
                 lst.Add(emp);
             }
             return lst;
@@ -37,7 +37,7 @@ namespace SqlServerDAL
         {
             List<Model.CComment> lst = new List<Model.CComment>();
             ccomment.CommTime = DateTime.Now;//获取系统时间
-            string sql = "INSERT INTO CComments Values (CComentID=" + ccomment.CCommentID + ",CinemaID=" + ccomment.CinemaID + ",UserName=" + ccomment.UserName + ",Comment=" + ccomment.Comment + ",CommTime=" + ccomment.CommTime + ",Grade=" + ccomment.Grade + ")";
+            string sql = "INSERT INTO CComments (CinemaID,UserName,Comment,CommTime,Grade) Values ('"+ccomment.CinemaID+"','"+ccomment.UserName+"','"+ccomment.Comment+"','"+ccomment.CommTime+"','"+ccomment.Grade+"')";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
             else return false;

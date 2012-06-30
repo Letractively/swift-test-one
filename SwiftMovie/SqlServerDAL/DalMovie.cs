@@ -25,7 +25,7 @@ namespace SqlServerDAL
         public bool addMovie(Model.Movie movie)
         {
             List<Model.Movie> lst = new List<Model.Movie>();
-            string sql = "INSERT INTO Movies Values (MovieID=" + movie.MovieID + ",MovieName=" 
+            string sql = "INSERT INTO Movies Values (MovieName=" 
                 +movie.MovieName + ",CoverURL=" + movie.CoverURL + ",Director=" + movie.Director + 
                 ",Protagonist=" + movie.Protagonist + ",MovieType=" + movie.Type +",ReleaseDate="
                 +movie.ReleaseDate+",RunTime="+movie.RunTime+ ")";

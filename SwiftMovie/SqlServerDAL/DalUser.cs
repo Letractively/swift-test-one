@@ -56,8 +56,7 @@ namespace SqlServerDAL
         public bool addNewUser(Model.User user)
         {
             List<Model.User> lst = new List<Model.User>();
-            string sql = "INSERT INTO Users Values (UserID=" + user.UserID
-                + ",UserName=" + user .UserName + ",Password=" + user.Password
+            string sql = "INSERT INTO Users Values (UserName=" + user .UserName + ",Password=" + user.Password
                 + ",Email=" + user.Email + ",Address" + user.Address +",BookState="+user.BookState+ ")";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
