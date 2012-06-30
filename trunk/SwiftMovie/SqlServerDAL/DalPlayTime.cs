@@ -16,7 +16,7 @@ namespace SqlServerDAL
             {
                 Model.PlayTime emp = new Model.PlayTime() { PlaytimeID = int.Parse(item[0].ToString()), 
                     MovieID =int.Parse( item[1].ToString()), CinemaID =int.Parse( item[2].ToString()), 
-                    PlayTime =DateTime.Parse( item[3].ToString()), PlayState =bool.Parse( item[4].ToString()) };
+                    Playtime =DateTime.Parse( item[3].ToString()), PlayState =bool.Parse( item[4].ToString()) };
                 lst.Add(emp);
             }
             return lst;
@@ -34,7 +34,7 @@ namespace SqlServerDAL
                     PlaytimeID = int.Parse(item[0].ToString()),
                     MovieID = int.Parse(item[1].ToString()),
                     CinemaID = int.Parse(item[2].ToString()),
-                    PlayTime = DateTime.Parse(item[3].ToString()),
+                    Playtime = DateTime.Parse(item[3].ToString()),
                     PlayState = bool.Parse(item[4].ToString())
                 };
                 lst.Add(emp);
@@ -46,19 +46,36 @@ namespace SqlServerDAL
         public bool addNewPlaytime(Model.PlayTime playTime)
         {
             List<Model.PlayTime> lst = new List<Model.PlayTime>();
-            string sql = "INSERT INTO PlayTimes Values (PlayTimeID=" + playTime.PlaytimeID 
-                + ",MovieID=" +playTime.MovieID + ",CinemaID=" + playTime.CinemaID
-                + ",PlayTime=" + playTime.PlayTime +",PlayState"+playTime.PlayState+ ")";
+            string sql = "INSERT INTO PlayTimes Values (MovieID=" +playTime.MovieID + ",CinemaID=" + playTime.CinemaID
+                + ",PlayTime=" + playTime.Playtime +",PlayState"+playTime.PlayState+ ")";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
             else return false;
             //throw new NotImplementedException();
         }
 
-        public bool removePlaytime(int playTimeID)
+        public bool removePlaytimeByplayTimeID(int playTimeID)
         {
             List<Model.PlayTime> lst = new List<Model.PlayTime>();
             string sql = "Delete From PlayTimes where PlaytimeID=" + playTimeID;
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            if (dt == 1) return true;
+            else return false;
+            //throw new NotImplementedException();
+        }
+        public bool removePlaytimeBymovieID(int movieID)
+        {
+            List<Model.PlayTime> lst = new List<Model.PlayTime>();
+            string sql = "Delete From PlayTimes where MovieID=" + movieID;
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            if (dt == 1) return true;
+            else return false;
+            //throw new NotImplementedException();
+        }
+        public bool removePlaytimeBycinemaID(int cinemaID)
+        {
+            List<Model.PlayTime> lst = new List<Model.PlayTime>();
+            string sql = "Delete From PlayTimes where CinemaID=" + cinemaID;
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
             else return false;
@@ -69,7 +86,7 @@ namespace SqlServerDAL
         {
             List<Model.PlayTime> lst = new List<Model.PlayTime>();
             string sql = "Uddate Cinemas set MovieID=" +playTime.MovieID + ",CinemaID="
-                + playTime.CinemaID + ",PlayTime=" + playTime.PlayTime +
+                + playTime.CinemaID + ",PlayTime=" + playTime.Playtime +
             ",PlayState"+playTime.PlayState+ ",where PlaytimeID=" + playTime.PlaytimeID + ")";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;

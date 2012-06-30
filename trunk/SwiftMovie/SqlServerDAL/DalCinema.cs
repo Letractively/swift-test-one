@@ -23,7 +23,7 @@ namespace SqlServerDAL
         public bool addCinema(Model.Cinema cinema)
         {
             List<Model.Cinema> lst = new List<Model.Cinema>();
-            string sql = "INSERT INTO Cinemas Values (CinemaID=" + cinema.CinemaID + ",CinemaName=" + cinema.CinemaName + ",Address=" + cinema.Address + ",CinemaMap=" + cinema.CinemaMap + ",CinemaTel=" + cinema.CinemaTel + ",CinemaGrade="+cinema.CinemaGrade+")";
+            string sql = "INSERT INTO Cinemas Values (CinemaName=" + cinema.CinemaName + ",Address=" + cinema.Address + ",CinemaMap=" + cinema.CinemaMap + ",CinemaTel=" + cinema.CinemaTel + ",CinemaGrade="+cinema.CinemaGrade+")";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
             else return false;

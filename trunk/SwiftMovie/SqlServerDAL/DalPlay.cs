@@ -23,7 +23,7 @@ namespace SqlServerDAL
             //throw new NotImplementedException();
         }
 
-        public List<Model.Play> getPlayList(int movieID)
+        public List<Model.Play> getPlayListBymovieID(int movieID)
         {
             List<Model.Play> lst = new List<Model.Play>();
             DataTable dt = DBUtility.SqlHelper.executeTable("select * from Plays where MovieID="+movieID, CommandType.Text, null);
@@ -41,6 +41,25 @@ namespace SqlServerDAL
             }
             return lst;
            // throw new NotImplementedException();
+        }
+        public List<Model.Play> getPlayListBycinemaID(int cinemaID)
+        {
+            List<Model.Play> lst = new List<Model.Play>();
+            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Plays where CinemaID=" + cinemaID, CommandType.Text, null);
+            foreach (DataRow item in dt.Rows)
+            {
+                Model.Play emp = new Model.Play()
+                {
+                    PlayID = int.Parse(item[0].ToString()),
+                    PlayName = item[1].ToString(),
+                    MovieID = int.Parse(item[2].ToString()),
+                    CinemaID = int.Parse(item[3].ToString()),
+                    Price = float.Parse(item[4].ToString())
+                };
+                lst.Add(emp);
+            }
+            return lst;
+            // throw new NotImplementedException();
         }
 
         public List<Model.Play> getPlayList(int movieID, int cinemaID)
@@ -66,7 +85,7 @@ namespace SqlServerDAL
         public bool addNewPlay(Model.Play play)
         {
             List<Model.Play> lst = new List<Model.Play>();
-            string sql = "INSERT INTO Plays Values (PlayID=" + play .PlayID + ",PlayName=" 
+            string sql = "INSERT INTO Plays Values (PlayName=" 
                 + play.PlayName + ",MovieID=" + play.MovieID + ",CinemaID=" + play.CinemaID
                 + ",Price=" + play.Price  + ")";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);

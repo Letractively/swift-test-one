@@ -9,8 +9,8 @@ namespace IDAL
     public interface IPlay
     {
         List<Play> getPlayList();
-        List<Play> getPlayList(int movieID);
-        List<Play> getPlayList(int cinemaID);
+        List<Play> getPlayListBymovieID(int movieID);
+        List<Play> getPlayListBycinemaID(int cinemaID);
         List<Play> getPlayList(int movieID, int cinemaID);
 
         bool addNewPlay(Play play);

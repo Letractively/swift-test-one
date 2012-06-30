@@ -10,7 +10,7 @@ namespace Model
         public int PlaytimeID { get; set; }
         public int MovieID { get; set; }
         public int CinemaID { get; set; }
-        public DateTime PlayTime { get;set; }
+        public DateTime Playtime { get;set; }
         public bool PlayState { get; set; }
     }
 }
