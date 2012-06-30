@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace SqlServerDAL
 {
@@ -9,32 +10,91 @@ namespace SqlServerDAL
     {
         public List<Model.Play> getPlayList()
         {
-            throw new NotImplementedException();
+            List<Model.Play> lst = new List<Model.Play>();
+            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Plays", CommandType.Text, null);
+            foreach (DataRow item in dt.Rows)
+            {
+                Model.Play emp = new Model.Play() { PlayID = int.Parse(item[0].ToString()), PlayName = item[1].ToString(),
+                    MovieID = int.Parse(item[2].ToString()), CinemaID = int.Parse(item[3].ToString()), 
+                    Price = float.Parse(item[4].ToString()) };
+                lst.Add(emp);
+            }
+            return lst;
+            //throw new NotImplementedException();
         }
 
         public List<Model.Play> getPlayList(int movieID)
         {
-            throw new NotImplementedException();
+            List<Model.Play> lst = new List<Model.Play>();
+            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Plays where MovieID="+movieID, CommandType.Text, null);
+            foreach (DataRow item in dt.Rows)
+            {
+                Model.Play emp = new Model.Play()
+                {
+                    PlayID = int.Parse(item[0].ToString()),
+                    PlayName = item[1].ToString(),
+                    MovieID = int.Parse(item[2].ToString()),
+                    CinemaID = int.Parse(item[3].ToString()),
+                    Price = float.Parse(item[4].ToString())
+                };
+                lst.Add(emp);
+            }
+            return lst;
+           // throw new NotImplementedException();
         }
 
         public List<Model.Play> getPlayList(int movieID, int cinemaID)
         {
-            throw new NotImplementedException();
+            List<Model.Play> lst = new List<Model.Play>();
+            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Plays where MovieID="+movieID+"and CinemaID="+cinemaID, CommandType.Text, null);
+            foreach (DataRow item in dt.Rows)
+            {
+                Model.Play emp = new Model.Play()
+                {
+                    PlayID = int.Parse(item[0].ToString()),
+                    PlayName = item[1].ToString(),
+                    MovieID = int.Parse(item[2].ToString()),
+                    CinemaID = int.Parse(item[3].ToString()),
+                    Price = float.Parse(item[4].ToString())
+                };
+                lst.Add(emp);
+            }
+            return lst;
+            //throw new NotImplementedException();
         }
 
         public bool addNewPlay(Model.Play play)
         {
-            throw new NotImplementedException();
+            List<Model.Play> lst = new List<Model.Play>();
+            string sql = "INSERT INTO Plays Values (PlayID=" + play .PlayID + ",PlayName=" 
+                + play.PlayName + ",MovieID=" + play.MovieID + ",CinemaID=" + play.CinemaID
+                + ",Price=" + play.Price  + ")";
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            if (dt == 1) return true;
+            else return false;
+            //throw new NotImplementedException();
         }
 
         public bool removePlay(int playID)
         {
-            throw new NotImplementedException();
+            List<Model.Play> lst = new List<Model.Play>();
+            string sql = "Delete From Plays where PlayID=" + playID;
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            if (dt == 1) return true;
+            else return false;
+           // throw new NotImplementedException();
         }
 
         public bool editPlay(Model.Play play)
         {
-            throw new NotImplementedException();
+            List<Model.Play> lst = new List<Model.Play>();
+            string sql = "Uddate Cinemas set (PlayName=" + play.PlayID +
+                ",MovieID=" + play.MovieID + ",CinemaID=" + play.CinemaID
+                + ",Price=" + play.Price + ",where PlayID="+play.PlayID+")";
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            if (dt == 1) return true;
+            else return false;
+           // throw new NotImplementedException();
         }
     }
 }

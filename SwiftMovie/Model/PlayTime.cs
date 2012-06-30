@@ -7,7 +7,7 @@ namespace Model
 {
     public class PlayTime
     {
-        public int PlayTime { get; set; }
+        public int PlaytimeID { get; set; }
         public int MovieID { get; set; }
         public int CinemaID { get; set; }
         public DateTime PlayTime { get;set; }
