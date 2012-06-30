@@ -3,45 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using IDAL;
+using System.Configuration;
+using System.Reflection;
 
 namespace DALFactory
 {
     public abstract class DataAccess
     {
+        static string path = ConfigurationManager.AppSettings["WebDAL"].ToString();
         public static IUser createDalUser()
-        { 
-            //add code
-            return null;
+        {
+            IUser user = (IUser)Assembly.Load(path).CreateInstance(path + ".DalUser");
+            return user;
         }
         public static IMovie createDalMovie()
         {
-            //add code
-            return null;
+            IMovie movie = (IMovie)Assembly.Load(path).CreateInstance(path + ".DalMovie");
+            return movie;
         }
         public static ICComment createDalCComment()
         {
-            //add code
-            return null;
+            ICComment ccomment = (ICComment)Assembly.Load(path).CreateInstance(path + ".DalCComment");
+            return ccomment;
         }
         public static ICinecism createDalCinecism()
-        { 
-            //add code
-            return null;
+        {
+            ICinecism cinecism = (ICinecism)Assembly.Load(path).CreateInstance(path + ".DalCinecism");
+            return cinecism;
         }
         public static ICinema createDalCinema()
         {
-            //add code
-            return null;
+            ICinema cinema = (ICinema)Assembly.Load(path).CreateInstance(path + ".DalCinema");
+            return cinema;
         }
         public static IPlay createDalPlay()
         {
-            //add code
-            return null;
+            IPlay play = (IPlay)Assembly.Load(path).CreateInstance(path + ".DalPlay");
+            return play;
         }
         public static IPlayTime createDalPlayTime()
         {
-            //add code
-            return null;
+            IPlayTime playTime = (IPlayTime)Assembly.Load(path).CreateInstance(path + ".DalPlayTime");
+            return playTime;
         }
     }
 }
