@@ -25,10 +25,10 @@ namespace SqlServerDAL
         public bool addMovie(Model.Movie movie)
         {
             List<Model.Movie> lst = new List<Model.Movie>();
-            string sql = "INSERT INTO Movies Values (MovieName=" 
-                +movie.MovieName + ",CoverURL=" + movie.CoverURL + ",Director=" + movie.Director + 
-                ",Protagonist=" + movie.Protagonist + ",MovieType=" + movie.Type +",ReleaseDate="
-                +movie.ReleaseDate+",RunTime="+movie.RunTime+ ")";
+            string sql = "INSERT INTO Movies(MovieName,CoverURL,Director,Protagonist,MovieType,ReleaseDate,RunTime) Values ('"
+                + movie.MovieName + "','" + movie.CoverURL + "','" + movie.Director +
+                "','" + movie.Protagonist + "','" + movie.Type + "','"
+                + movie.ReleaseDate + "','" + movie.RunTime + "')";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
             else return false;
@@ -48,10 +48,10 @@ namespace SqlServerDAL
         public bool editMovie(Model.Movie movie)
         {
             List<Model.Movie> lst = new List<Model.Movie>();
-            string sql = "Uddate Cinemas set (MovieName=" + movie.MovieName + ",CoverURL=" + movie.CoverURL + 
+            string sql = "Update Cinemas set MovieName=" + movie.MovieName + ",CoverURL=" + movie.CoverURL + 
                 ",Director=" + movie.Director + ",Protagonist=" + movie.Protagonist +
                 ",MovieType=" + movie.Type + ",ReleaseDate=" + movie.ReleaseDate +
-                ",RunTime=" + movie.RunTime + ",where MovieID="+movie.MovieID+")";
+                ",RunTime=" + movie.RunTime + ",where MovieID="+movie.MovieID;
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
             else return false;
