@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace SqlServerDAL
 {
@@ -9,22 +10,48 @@ namespace SqlServerDAL
     {
         public List<Model.Cinecism> getCinecismList()
         {
-            throw new NotImplementedException();
+            List<Model.Cinecism> lst = new List<Model.Cinecism>();
+            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Cinecisms", CommandType.Text, null);
+            foreach (DataRow item in dt.Rows)
+            {
+                Model.Cinecism emp = new Model.Cinecism() { CinecismID = int.Parse(item[0].ToString()),UserName=item[1].ToString(),CommTime = DateTime.Parse(item[2].ToString()), MovieID = int.Parse(item[3].ToString()), Comment = item[4].ToString() };
+                lst.Add(emp);
+            }
+            return lst;
+           // throw new NotImplementedException();
         }
 
         public List<Model.Cinecism> getCinecismList(int movieID)
         {
-            throw new NotImplementedException();
+            List<Model.Cinecism> lst = new List<Model.Cinecism>();
+            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Cinecisms where MovieID="+movieID, CommandType.Text, null);
+            foreach (DataRow item in dt.Rows)
+            {
+                Model.Cinecism emp = new Model.Cinecism() { CinecismID = int.Parse(item[0].ToString()), UserName = item[1].ToString(), CommTime = DateTime.Parse(item[2].ToString()), MovieID = int.Parse(item[3].ToString()), Comment = item[4].ToString() };
+                lst.Add(emp);
+            }
+            return lst;
+           // throw new NotImplementedException();
         }
 
         public bool addCinecism(Model.Cinecism cinecism)
         {
-            throw new NotImplementedException();
+            List<Model.Cinecism> lst = new List<Model.Cinecism>();
+            string sql = "INSERT INTO Cinecisms Values (CinecismID=" + cinecism.CinecismID + ",UserName=" + cinecism.UserName + ",Comment=" + cinecism.Comment + ",CommentTime=" + cinecism.CommTime + ",MovieID=" + cinecism.MovieID + ")";
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            if (dt == 1) return true;
+            else return false;
+            //throw new NotImplementedException();
         }
 
         public bool removeCinecism(int id)
         {
-            throw new NotImplementedException();
+            List<Model.Cinecism> lst = new List<Model.Cinecism>();
+            string sql = "Delete From Cinecisms where CinecismID=" + id;
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            if (dt == 1) return true;
+            else return false;
+            //throw new NotImplementedException();
         }
     }
 }
