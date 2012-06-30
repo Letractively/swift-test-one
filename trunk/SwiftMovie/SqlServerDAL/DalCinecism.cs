@@ -14,7 +14,9 @@ namespace SqlServerDAL
             DataTable dt = DBUtility.SqlHelper.executeTable("select * from Cinecisms", CommandType.Text, null);
             foreach (DataRow item in dt.Rows)
             {
-                Model.Cinecism emp = new Model.Cinecism() { CinecismID = int.Parse(item[0].ToString()),UserName=item[1].ToString(),CommTime = DateTime.Parse(item[2].ToString()), MovieID = int.Parse(item[3].ToString()), Comment = item[4].ToString() };
+                Model.Cinecism emp = new Model.Cinecism() { CinecismID = int.Parse(item[0].ToString()),UserName=item[1].ToString(),
+                    CommTime = DateTime.Parse(item[3].ToString()), MovieID = int.Parse(item[4].ToString()),
+                    Comment = item[2].ToString() };
                 lst.Add(emp);
             }
             return lst;
@@ -27,7 +29,7 @@ namespace SqlServerDAL
             DataTable dt = DBUtility.SqlHelper.executeTable("select * from Cinecisms where MovieID="+movieID, CommandType.Text, null);
             foreach (DataRow item in dt.Rows)
             {
-                Model.Cinecism emp = new Model.Cinecism() { CinecismID = int.Parse(item[0].ToString()), UserName = item[1].ToString(), CommTime = DateTime.Parse(item[2].ToString()), MovieID = int.Parse(item[3].ToString()), Comment = item[4].ToString() };
+                Model.Cinecism emp = new Model.Cinecism() { CinecismID = int.Parse(item[0].ToString()), UserName = item[1].ToString(), CommTime = DateTime.Parse(item[3].ToString()), MovieID = int.Parse(item[4].ToString()), Comment = item[2].ToString() };
                 lst.Add(emp);
             }
             return lst;
@@ -38,7 +40,7 @@ namespace SqlServerDAL
         {
             List<Model.Cinecism> lst = new List<Model.Cinecism>();
             cinecism.CommTime = DateTime.Now;//获取系统时间
-            string sql = "INSERT INTO Cinecisms Values (UserName=" + cinecism.UserName + ",Comment=" + cinecism.Comment + ",CommentTime=" + cinecism.CommTime + ",MovieID=" + cinecism.MovieID + ")";
+            string sql = "INSERT INTO Cinecisms（UserName,Comment,CommTime,MovieID） Values ('" + cinecism.UserName + "','" + cinecism.Comment + "','" + cinecism.CommTime + "','" + cinecism.MovieID + "')";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
             else return false;
