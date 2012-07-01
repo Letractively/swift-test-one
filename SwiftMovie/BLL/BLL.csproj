@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MovieComm.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CinemaBLL.cs" />
+    <Compile Include="MovieBLL.cs" />
+    <Compile Include="PlayBLL.cs" />
+    <Compile Include="PlayTimeBLL.cs" />    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DALFactory\DALFactory.csproj">
