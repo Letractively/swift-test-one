@@ -14,5 +14,6 @@ namespace IDAL
         bool editCinema(Cinema cinema);
 
         Cinema getCinemaById(int id);
+        int getCinemaIdByName(string name);
     }
 }

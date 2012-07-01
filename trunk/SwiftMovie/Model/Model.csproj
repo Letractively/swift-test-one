@@ -43,6 +43,7 @@
     <Compile Include="CComment.cs" />
     <Compile Include="Cinecism.cs" />
     <Compile Include="Cinema.cs" />
+    <Compile Include="CinemaPic.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Play.cs" />

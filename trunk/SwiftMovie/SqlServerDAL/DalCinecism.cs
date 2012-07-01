@@ -42,18 +42,22 @@ namespace SqlServerDAL
             cinecism.CommTime = DateTime.Now;//获取系统时间
             string sql = "INSERT INTO Cinecisms（UserName,Comment,CommTime,MovieID） Values ('" + cinecism.UserName + "','" + cinecism.Comment + "','" + cinecism.CommTime + "','" + cinecism.MovieID + "')";
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
-            if (dt == 1) return true;
-            else return false;
+            if (dt == 1) 
+                return true;
+            else 
+                return false;
             //throw new NotImplementedException();
         }
 
         public bool removeCinecism(int id)
         {
-            List<Model.Cinecism> lst = new List<Model.Cinecism>();
+            //List<Model.Cinecism> lst = new List<Model.Cinecism>();
             string sql = "Delete From Cinecisms where CinecismID=" + id;
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
-            if (dt == 1) return true;
-            else return false;
+            if (dt == 1) 
+                return true;
+            else 
+                return false;
             //throw new NotImplementedException();
         }
     }

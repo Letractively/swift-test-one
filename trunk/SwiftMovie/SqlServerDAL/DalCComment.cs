@@ -47,11 +47,13 @@ namespace SqlServerDAL
 
         public bool removeCComent(int id)
         {
-            List<Model.CComment> lst = new List<Model.CComment>();
+            //List<Model.CComment> lst = new List<Model.CComment>();
             string sql = "DELETE FROM CComments where CinemaID=" + id ;
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
-            if (dt == 1) return true;
-            else return false;
+            if (dt == 1) 
+                return true;
+            else 
+                return false;
            // throw new NotImplementedException();
         }
     }
