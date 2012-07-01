@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALFactory", "DALFactory\DA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{8C594FCF-476D-4B50-9823-6E45F09D072B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,18 +111,6 @@ Global
 		{8C594FCF-476D-4B50-9823-6E45F09D072B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8C594FCF-476D-4B50-9823-6E45F09D072B}.Release|Win32.ActiveCfg = Release|Any CPU
 		{8C594FCF-476D-4B50-9823-6E45F09D072B}.Release|x86.ActiveCfg = Release|Any CPU
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Debug|Win32.ActiveCfg = Debug|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Debug|x86.ActiveCfg = Debug|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Debug|x86.Build.0 = Debug|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Release|Any CPU.ActiveCfg = Release|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Release|Mixed Platforms.Build.0 = Release|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Release|Win32.ActiveCfg = Release|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Release|x86.ActiveCfg = Release|x86
-		{8F2D4EBC-CAC1-4053-B7A7-16C48C1B7221}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

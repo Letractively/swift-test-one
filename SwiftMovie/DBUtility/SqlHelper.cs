@@ -44,6 +44,20 @@ namespace DBUtility
                 return effectRowCount;
             }
         }
+        public static int executeScalar(string cmdText, CommandType ct, params SqlParameter[] sqlparas)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["SummerMovieConnection"].ConnectionString;
+            using (SqlConnection sqlcn = new SqlConnection(connStr))
+            {
+                SqlCommand sqlcmd = new SqlCommand();
+                sqlcmd.Connection = sqlcn;
+                prepareCmd(ref sqlcmd, cmdText, ct, sqlparas);
+                sqlcn.Open();
+                int effectRowID = (int)sqlcmd.ExecuteScalar();
+                sqlcn.Close();
+                return effectRowID;
+            }
+        }
         public static DataTable executeTable(string cmdText, CommandType ct, params SqlParameter[] sqlparas)
         {
             string connStr = ConfigurationManager.ConnectionStrings["SummerMovieConnection"].ConnectionString;

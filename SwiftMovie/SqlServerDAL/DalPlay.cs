@@ -84,7 +84,7 @@ namespace SqlServerDAL
 
         public bool addNewPlay(Model.Play play)
         {
-            List<Model.Play> lst = new List<Model.Play>();
+            //List<Model.Play> lst = new List<Model.Play>();
             string sql = "INSERT INTO Plays(PlayName,MovieID,CinemaID,Price) Values ('"
                 + play.PlayName + "','" + play.MovieID + "','" + play.CinemaID
                 + "','" + play.Price  + "')";
@@ -96,7 +96,7 @@ namespace SqlServerDAL
 
         public bool removePlay(int playID)
         {
-            List<Model.Play> lst = new List<Model.Play>();
+            //List<Model.Play> lst = new List<Model.Play>();
             string sql = "Delete From Plays where PlayID=" + playID;
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
