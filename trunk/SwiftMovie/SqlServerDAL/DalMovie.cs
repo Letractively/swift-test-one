@@ -102,5 +102,26 @@ namespace SqlServerDAL
             return lst;
             //throw new NotImplementedException();
         }
+
+
+        public Model.Movie getMovieById(int id)
+        {
+            List<Model.Movie> lst = new List<Model.Movie>();
+            //Model.Movie movie = new Model.Movie();
+            string sql = "SELECT * FROM Movies WHERE MovieID=@id";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName = "@id",Value=id}
+            };
+            SqlDataReader dr = DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps);
+            if (dr.Read())
+            {
+                Model.Movie movie = new Model.Movie() { MovieID = int.Parse(dr[0].ToString()), MovieName = dr[1].ToString(), CoverURL = dr[2].ToString(), Director = dr[3].ToString(), Protagonist = dr[4].ToString(), Type = dr[5].ToString(), ReleaseDate = DateTime.Parse(dr[6].ToString()), RunTime = float.Parse(dr[7].ToString()) };
+                return movie;
+            }
+            else
+                return null;
+           
+            //throw new NotImplementedException();
+        }
     }
 }

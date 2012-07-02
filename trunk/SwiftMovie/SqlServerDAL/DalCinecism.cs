@@ -26,7 +26,7 @@ namespace SqlServerDAL
         public List<Model.Cinecism> getCinecismList(int movieID)
         {
             List<Model.Cinecism> lst = new List<Model.Cinecism>();
-            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Cinecisms where MovieID="+movieID, CommandType.Text, null);
+            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Cinecisms where MovieID="+movieID+" ORDER BY CommTime DESC", CommandType.Text, null);
             foreach (DataRow item in dt.Rows)
             {
                 Model.Cinecism emp = new Model.Cinecism() { CinecismID = int.Parse(item[0].ToString()), UserName = item[1].ToString(), CommTime = DateTime.Parse(item[3].ToString()), MovieID = int.Parse(item[4].ToString()), Comment = item[2].ToString() };

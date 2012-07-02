@@ -30,5 +30,27 @@ namespace IDAL
         /// <returns>删除成功为true，否则flase</returns>
         bool removePlaytimeBycinemaID(int cinemaID);
         bool editPlaytime(PlayTime playTime);
+        /// <summary>
+        /// 获取即将播放的电影
+        /// </summary>
+        /// <returns>按上映时间升序排列即将上映的电影</returns>
+        List<Movie> getSoonMovieList();
+        /// <summary>
+        /// 获取某电影院即将上映的电影
+        /// </summary>
+        /// <param name="cinemaID">电影院的ID</param>
+        /// <returns>按上映时间升序排列即将上映的电影</returns>
+        List<Movie> getSoonMovieList(int cinemaID);
+        /// <summary>
+        /// 获取正在热播的电影
+        /// </summary>
+        /// <returns>按降序排列的正在热播的电影</returns>
+        List<Movie> getRuningMovie();
+        /// <summary>
+        /// 获取某电影院正在热播的电影
+        /// </summary>
+        /// <param name="cinemaID">电影院ID</param>
+        /// <returns>按降序排列的正在热播的电影</returns>
+        List<Movie> getRuningMoive(int cinemaID);
     }
 }

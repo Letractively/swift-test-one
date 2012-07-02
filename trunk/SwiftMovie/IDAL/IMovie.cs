@@ -9,6 +9,7 @@ namespace IDAL
     public interface IMovie
     {
         List<Movie> getMovieList();
+        Movie getMovieById(int id);
         bool addMovie(Movie movie);
         bool removeMovie(int id);
         bool editMovie(Movie movie);
