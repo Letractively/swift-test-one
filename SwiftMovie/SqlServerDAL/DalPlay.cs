@@ -65,7 +65,7 @@ namespace SqlServerDAL
         public List<Model.Play> getPlayList(int movieID, int cinemaID)
         {
             List<Model.Play> lst = new List<Model.Play>();
-            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Plays where MovieID="+movieID+"and CinemaID="+cinemaID, CommandType.Text, null);
+            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Plays where MovieID="+movieID+"and CinemaID="+cinemaID+" order by PlayName", CommandType.Text, null);
             foreach (DataRow item in dt.Rows)
             {
                 Model.Play emp = new Model.Play()

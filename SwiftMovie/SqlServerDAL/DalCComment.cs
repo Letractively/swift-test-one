@@ -23,7 +23,7 @@ namespace SqlServerDAL
         public List<Model.CComment> getCCommentList(int CinemaID)
         {
             List<Model.CComment> lst = new List<Model.CComment>();
-            DataTable dt = DBUtility.SqlHelper.executeTable("select * from CComment where CinemaID="+CinemaID, CommandType.Text, null);
+            DataTable dt = DBUtility.SqlHelper.executeTable("select * from CComment where CinemaID="+CinemaID+" ORDER BY CommTime DESC", CommandType.Text, null);
             foreach (DataRow item in dt.Rows)
             {
                 Model.CComment emp = new Model.CComment() { CCommentID = int.Parse(item[0].ToString()), CinemaID = int.Parse(item[1].ToString()), CommTime = DateTime.Parse(item[2].ToString()), Grade = float.Parse(item[3].ToString()), Comment = item[4].ToString(), UserName = item[5].ToString() };

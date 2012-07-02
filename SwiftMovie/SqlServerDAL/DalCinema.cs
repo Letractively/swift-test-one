@@ -238,14 +238,44 @@ namespace SqlServerDAL
 
         public Model.Cinema getCinemaById(int id)
         {
-            Model.Cinema lst1 = new Model.Cinema();
-            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Cinemas where CinemaID="+id, CommandType.Text, null);
-            foreach (DataRow item in dt.Rows)
+            Model.Cinema cinema = new Model.Cinema();
+            string sql = "SELECT * FROM vew_Cinemas WHERE CinemaID=@id";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@id",Value=id}
+            };
+            SqlDataReader sr = DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps);
+            if (sr.Read())
             {
-                Model.Cinema emp = new Model.Cinema() { CinemaID = int.Parse(item[0].ToString()), CinemaName = item[1].ToString(), Address = item[2].ToString(), CinemaMap = item[3].ToString(), CinemaGrade = item[5].ToString(), CinemaTel = item[4].ToString() };
-                lst1 = emp;
+                cinema.CinemaID = int.Parse(sr[0].ToString());
+                cinema.CinemaName = sr[1].ToString();
+                cinema.Address = sr[2].ToString();
+                cinema.CinemaMap = sr[3].ToString();
+                cinema.CinemaTel = sr[4].ToString();
+                cinema.CinemaGrade = sr[5].ToString();
+                cinema.Privilege = sr[6].ToString();
+                cinema.VIP = sr[7].ToString();
+                cinema.Dining = sr[8].ToString();
+                cinema.Park = sr[9].ToString();
+                cinema.GameCenter = sr[10].ToString();
+                cinema.Intro3D = sr[11].ToString();
+                cinema.IntroVIP = sr[12].ToString();
+                cinema.Introduce = sr[13].ToString();
+
+                List<Model.CinemaPic> pics = new List<Model.CinemaPic>();
+                string sql1 = "SELECT * FROM CinemaPic WHERE CinemaID=@cinemaID";
+                SqlParameter[] sps2 = new SqlParameter[]{
+                    new SqlParameter(){ParameterName="@cinemaID",Value=cinema.CinemaID}
+                };
+                DataTable dt = DBUtility.SqlHelper.executeTable(sql1, CommandType.Text, sps2);
+                foreach (DataRow item in dt.Rows) {
+                    Model.CinemaPic pic = new Model.CinemaPic() { PicURL = item[0].ToString() };
+                    pics.Add(pic);
+                }
+                cinema.CinemaPic = pics;
+
+                return cinema;
             }
-            return lst1;
+            return null;
             //throw new NotImplementedException();
         }
 

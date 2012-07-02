@@ -13,5 +13,6 @@ namespace IDAL
         bool addNewUser(User user);
         bool eidtUser(User user);
         bool removeUser(int userID);
+        bool isUserExist(string userName);
     }
 }

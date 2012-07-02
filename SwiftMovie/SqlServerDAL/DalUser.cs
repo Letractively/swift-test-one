@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace SqlServerDAL
 {
@@ -32,13 +33,16 @@ namespace SqlServerDAL
         public Model.User getUser(string name, string password)
         {
             Model.User lst = new Model.User();
-            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Users where UserName="+name+",and Password="+password, CommandType.Text, null);
-
-            foreach (DataRow item in dt.Rows)
+            string sql = "SELECT * FROM Users WHERE UserName=@userName AND Password=@password";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@userName",Value=name},
+                new SqlParameter(){ParameterName="@password",Value=password}
+            };
+            SqlDataReader item = DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps);
+            if (item.Read())
             {
                 Model.User emp = new Model.User()
                 {
-
                     UserID = int.Parse(item[0].ToString()),
                     UserName = item[1].ToString(),
                     Password = item[2].ToString(),
@@ -46,9 +50,29 @@ namespace SqlServerDAL
                     Address = item[4].ToString(),
                     BookState = bool.Parse(item[5].ToString()),
                 };
-                lst=emp;
+                return emp;
             }
-            return lst;
+            else
+            {
+                return null;
+            }
+            //DataTable dt = DBUtility.SqlHelper.executeTable("select * from Users where UserName="+name+",and Password="+password, CommandType.Text, null);
+
+            //foreach (DataRow item in dt.Rows)
+            //{
+            //    Model.User emp = new Model.User()
+            //    {
+
+            //        UserID = int.Parse(item[0].ToString()),
+            //        UserName = item[1].ToString(),
+            //        Password = item[2].ToString(),
+            //        Email = item[3].ToString(),
+            //        Address = item[4].ToString(),
+            //        BookState = bool.Parse(item[5].ToString()),
+            //    };
+            //    lst=emp;
+            //}
+            //return lst;
             
             //throw new NotImplementedException();
         }
@@ -83,6 +107,25 @@ namespace SqlServerDAL
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
             if (dt == 1) return true;
             else return false;
+            //throw new NotImplementedException();
+        }
+
+
+        public bool isUserExist(string userName)
+        {
+            string sql = "SELECT * FROM Users WHERE UserName=@userName";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@userName",Value=userName}
+            };
+            SqlDataReader sr = DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps);
+            if (sr.Read())
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
             //throw new NotImplementedException();
         }
     }
