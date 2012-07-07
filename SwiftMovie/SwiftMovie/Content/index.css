@@ -1,0 +1,106 @@
+﻿
+#screen 
+{
+float:left;
+position:relative;
+left:0px;
+top:0px;
+
+width: 400px;
+height:400px;
+background: #000;
+color: #fff;
+}
+
+#screen div 
+{
+position: absolute;
+overflow: hidden;
+cursor: pointer;
+}
+	
+#screen img 
+{
+position: absolute;
+width: 100%;
+height: 100%;
+}
+	
+#screen .label 
+{
+position: absolute;
+color: #fff;
+background: #000;
+font-family: arial;
+white-space: no-wrap;
+}
+
+#content 
+{
+float:right;
+width:250px;
+height:600px;
+border:1px solid #000000;
+
+padding:0px;
+}
+
+#content ul.posts 
+{
+    width: 250px;
+    margin: 0 auto;
+	padding:0px;
+}
+
+#content ul.posts li.post a 
+{
+    color: #333333;
+    padding: 0px;
+	}
+
+#content ul.posts li.post img.post-tn 
+{
+    height: 240px;
+    width: 250px;
+}
+
+#content .posts .excerpt 
+{
+    display: none;
+    padding: 0 0 10px;
+}
+
+#content ul.posts li.post div.load-excerpt 
+{
+    background: #507596;
+    height: 3px;
+    position: absolute;
+    top: -5px;
+    width: 300px;
+}
+
+#content .posts .excerpt p 
+{
+
+    padding: 0 10px 0.5em;
+	line-height: 150%;
+}
+
+
+#content ul.posts li.post 
+{
+    background: #FFFFFF;
+    color: #666666;
+    height: 200px;
+    position: relative;
+}
+
+*{padding:0px;margin:0px;}
+* li{list-style:none;}
+a{text-decoration:none;color:#20537A;}
+a:hover{text-decoration:underline;}
+
+ol, ul 
+{
+list-style: none outside none;
+}
