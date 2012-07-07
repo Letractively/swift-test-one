@@ -27,7 +27,12 @@ namespace SqlServerDAL
         public List<Model.PlayTime> getPlayTimeList(int movieID, int cinemaID)
         {
             List<Model.PlayTime> lst = new List<Model.PlayTime>();
-            DataTable dt = DBUtility.SqlHelper.executeTable("select * from PlayTimes where MovieID=" + movieID + "and CinemaID=" + cinemaID, CommandType.Text, null);
+            string sql = "SELECT * FROM PlayTimes WHERE MovieID=@movieID AND CinemaID=@cinemaID";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@movieID",Value=movieID},
+                new SqlParameter(){ParameterName="@cinemaID",Value=cinemaID}
+            };
+            DataTable dt = DBUtility.SqlHelper.executeTable(sql, CommandType.Text, sps);
             foreach (DataRow item in dt.Rows)
             {
                 Model.PlayTime emp = new Model.PlayTime()
@@ -47,9 +52,17 @@ namespace SqlServerDAL
         public bool addNewPlaytime(Model.PlayTime playTime)
         {
             List<Model.PlayTime> lst = new List<Model.PlayTime>();
-            string sql = "INSERT INTO PlayTimes(MovieID,CinemaID,PlayTime,PlayState) Values ('" + playTime.MovieID + "','" + playTime.CinemaID
-                + "','" + playTime.Playtime + "','" + playTime.PlayState + "')";
-            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            //string sql = "INSERT INTO PlayTimes(MovieID,CinemaID,PlayTime,PlayState) Values ('" + playTime.MovieID + "','" + playTime.CinemaID
+            //    + "','" + playTime.Playtime + "','" + playTime.PlayState + "')";
+            string sql = "INSERT INTO PlayTimes(MovieID.CinemaID,PlayTime,PlayState) VALUES (@movieID,@cinemaID,@playTime,@playState)";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@movieID",Value=playTime.MovieID},
+                new SqlParameter(){ParameterName="@cinemaID",Value=playTime.CinemaID},
+                new SqlParameter(){ParameterName="@playTime",Value=playTime.Playtime},
+                new SqlParameter(){ParameterName="@playState",Value=playTime.PlayState}
+            };
+
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) return true;
             else return false;
             //throw new NotImplementedException();
@@ -86,10 +99,18 @@ namespace SqlServerDAL
         public bool editPlaytime(Model.PlayTime playTime)
         {
             List<Model.PlayTime> lst = new List<Model.PlayTime>();
-            string sql = "Update Cinemas set MovieID=" +playTime.MovieID + ",CinemaID="
-                + playTime.CinemaID + ",PlayTime=" + playTime.Playtime +
-            ",PlayState"+playTime.PlayState+ ",where PlaytimeID=" + playTime.PlaytimeID ;
-            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            //string sql = "Update Cinemas set MovieID=" +playTime.MovieID + ",CinemaID="
+            //    + playTime.CinemaID + ",PlayTime=" + playTime.Playtime +
+            //",PlayState"+playTime.PlayState+ ",where PlaytimeID=" + playTime.PlaytimeID ;
+            string sql = "UPDATE Cinemas SET MovieID=@movieID,CinemaID=@cinemaID,PlayTime=@playTime,PlayState=@playState WHERE PlaytimeID=@playtimeID";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@movieID",Value=playTime.MovieID},
+                new SqlParameter(){ParameterName="@cinemaID",Value=playTime.CinemaID},
+                new SqlParameter(){ParameterName="@playTime",Value=playTime.Playtime},
+                new SqlParameter(){ParameterName="@playState",Value=playTime.PlayState},
+                new SqlParameter(){ParameterName="@playtimeID",Value=playTime.PlaytimeID}
+            };
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) return true;
             else return false;
             //throw new NotImplementedException();

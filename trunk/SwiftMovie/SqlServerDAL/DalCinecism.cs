@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace SqlServerDAL
 {
@@ -40,8 +41,15 @@ namespace SqlServerDAL
         {
             List<Model.Cinecism> lst = new List<Model.Cinecism>();
             cinecism.CommTime = DateTime.Now;//获取系统时间
-            string sql = "INSERT INTO Cinecisms（UserName,Comment,CommTime,MovieID） Values ('" + cinecism.UserName + "','" + cinecism.Comment + "','" + cinecism.CommTime + "','" + cinecism.MovieID + "')";
-            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            //string sql = "INSERT INTO Cinecisms（UserName,Comment,CommTime,MovieID） Values ('" + cinecism.UserName + "','" + cinecism.Comment + "','" + cinecism.CommTime + "','" + cinecism.MovieID + "')";
+            string sql = "INSERT INTO Cinecisms(UserName,Comment,CommTime,MovieID) VALUES (@userName,@comment,@commTime,@movieID)";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@userName",Value=cinecism.UserName},
+                new SqlParameter(){ParameterName="@comment",Value=cinecism.Comment},
+                new SqlParameter(){ParameterName="@commTime",Value=cinecism.CommTime},
+                new SqlParameter(){ParameterName="@movieID",Value=cinecism.MovieID}
+            };
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) 
                 return true;
             else 

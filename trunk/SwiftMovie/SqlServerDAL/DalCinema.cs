@@ -45,8 +45,9 @@ namespace SqlServerDAL
             //string sql = "INSERT INTO Cinemas(CinemaName,Address,CinemaMap,CinemaTel,CinemaGrade) Values ('" + cinema.CinemaName + "','" + cinema.Address + "','" + cinema.CinemaMap + "','" + cinema.CinemaTel + "','" + cinema.CinemaGrade + "')";
 
 
-            string sql2 = "INSERT INTO Cinemas(CinemaName,Address,CinemaMap,CinemaTel,CinemaGrade) Values (@CinemaName,@Address,@CinemaMap,@CinemaTel,@CinemaGrade);select @@IDENTITY;";
+            string sql2 = "INSERT INTO Cinemas(CinemaID,CinemaName,Address,CinemaMap,CinemaTel,CinemaGrade) Values (@CinemaID,@CinemaName,@Address,@CinemaMap,@CinemaTel,@CinemaGrade);select @@IDENTITY;";
             SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@CinemaID",Value=cinema.CinemaID},
             new SqlParameter(){ ParameterName="@CinemaName", Value=cinema.CinemaName},
             new SqlParameter(){ ParameterName="@Address", Value=cinema.Address},
             new SqlParameter(){ ParameterName="@CinemaMap", Value=cinema.CinemaMap},
@@ -168,14 +169,15 @@ namespace SqlServerDAL
             //List<Model.Cinema> lst = new List<Model.Cinema>();
             //string sql = "Update Cinemas set CinemaName=" + cinema.CinemaName + ",Address=" + cinema.Address + ",CinemaMap=" + cinema.CinemaMap + ",CinemaTel=" + cinema.CinemaTel + ",CinemaGrade=" + cinema.CinemaGrade + ",where CinemaID="+cinema.CinemaID;
 
-            string sql = "UPDATE Cinemas c SET c.CinemaMap=@CinemaMap,c.CinemaTel=@CinemaTel,c.CinemaGrade=@CinemaGrade WHERE c.CinemaName=@CinemaName";
+            string sql = "UPDATE Cinemas c SET c.CinemaName=@CinemaName,c.CinemaMap=@CinemaMap,c.CinemaTel=@CinemaTel,c.CinemaGrade=@CinemaGrade WHERE c.CinemaID=@CinemaID";
             SqlParameter[] sps = new SqlParameter[]{
                 new SqlParameter(){ParameterName="@CinemaMap",Value=cinema.CinemaMap},
                 new SqlParameter(){ParameterName="@CinemaTel",Value=cinema.CinemaTel},
                 new SqlParameter(){ParameterName="@CinemaGrade",Value=cinema.CinemaGrade},
-                new SqlParameter(){ParameterName="@CinemaName",Value=cinema.CinemaName}
+                new SqlParameter(){ParameterName="@CinemaName",Value=cinema.CinemaName},
+                new SqlParameter(){ParameterName="@CinemaID",Value=cinema.CinemaID}
             };
-            int id = DBUtility.SqlHelper.executeScalar(sql, CommandType.Text, sps);//获取次电影院的ID
+            int id = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);//获取次电影院的ID
             if (id == -1)
             {
                 return false;
@@ -185,7 +187,7 @@ namespace SqlServerDAL
             SqlParameter[] sps2 = new SqlParameter[]{
                 new SqlParameter(){ParameterName = "@Pricilege",Value=cinema.Privilege},
                 new SqlParameter(){ParameterName ="@VIP",Value=cinema.VIP},
-                new SqlParameter(){ParameterName="@id",Value=id}
+                new SqlParameter(){ParameterName="@id",Value=cinema.CinemaID}
             };
             if (DBUtility.SqlHelper.executeNonQuery(sql2, CommandType.Text, sps2) != 1)
             {
@@ -200,7 +202,7 @@ namespace SqlServerDAL
                 new SqlParameter(){ParameterName = "@Intro3D",Value=cinema.Intro3D}, 
                 new SqlParameter(){ParameterName = "@IntroVIP",Value=cinema.IntroVIP}, 
                 new SqlParameter(){ParameterName = "@Introduce",Value=cinema.Introduce}, 
-                new SqlParameter(){ParameterName = "@id",Value=id}
+                new SqlParameter(){ParameterName = "@id",Value=cinema.CinemaID}
             };
             if (DBUtility.SqlHelper.executeNonQuery(sql3, CommandType.Text, sps3) != 1)
             {
@@ -209,7 +211,7 @@ namespace SqlServerDAL
             //更新CinemaPic表中的相关数据
             string sql4 = "DELETE FROM CinemaPic WHERE CinemaID=@id";
             SqlParameter[] sps4 = new SqlParameter[]{
-                new SqlParameter(){ParameterName="@id",Value=id}
+                new SqlParameter(){ParameterName="@id",Value=cinema.CinemaID}
             };
             if (DBUtility.SqlHelper.executeNonQuery(sql4, CommandType.Text, sps4) == -1)
             {
@@ -220,7 +222,7 @@ namespace SqlServerDAL
             {
                 string sql5 = "INSERT INTO CinemaPic(CinemaID,PicURL) Values (@id,@PicURL)";
                 SqlParameter[] sps5 = new SqlParameter[]{
-                    new SqlParameter(){ParameterName ="@id",Value=id},
+                    new SqlParameter(){ParameterName ="@id",Value=cinema.CinemaID},
                     new SqlParameter(){ParameterName="@PicURL",Value=c.PicURL}
                     };
                 if (DBUtility.SqlHelper.executeNonQuery(sql5, CommandType.Text, sps5) != 1)

@@ -31,8 +31,9 @@ namespace SqlServerDAL
             //    "','" + movie.Protagonist + "','" + movie.Type + "','"
             //    + movie.ReleaseDate + "','" + movie.RunTime + "')";
 
-            string sql = "INSERT INTO Movies(MovieName,CoverURL,Director,Protagonist,MovieType,ReleaseDate,RunTime) Values (@MovieName,@CoverURL,@Director,@Protagonist,@Type,@ReleaseDate,@RunTime)";
+            string sql = "INSERT INTO Movies(MovieID,MovieName,CoverURL,Director,Protagonist,MovieType,ReleaseDate,RunTime) Values (@MovieID,@MovieName,@CoverURL,@Director,@Protagonist,@Type,@ReleaseDate,@RunTime)";
             SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@MovieID",Value=movie.MovieID},
                 new SqlParameter(){ParameterName="@MovieName",Value=movie.MovieName},
                 new SqlParameter(){ParameterName="@CoverURL",Value=movie.CoverURL},
                 new SqlParameter(){ParameterName="@Director",Value=movie.Director},
@@ -88,8 +89,12 @@ namespace SqlServerDAL
         public List<Model.Movie> getMovieListByName(string name)
         {
             List<Model.Movie> lst = new List<Model.Movie>();
-            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Movies where (MovieName like '%"+name+"%') order by MovieName", 
-                CommandType.Text, null);
+            string sql = "SELECT * FROM Movies WHERE (MovieName LIKE %@name%) ORDER BY MovieName";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@name",Value=name}
+            };
+            DataTable dt = DBUtility.SqlHelper.executeTable(sql, 
+                CommandType.Text, sps);
             foreach (DataRow item in dt.Rows)
             {
                 Model.Movie emp = new Model.Movie() { MovieID = int.Parse(item[0].ToString()), 
