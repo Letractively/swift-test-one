@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "注册";
+}
+
+<link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/log.css")" />
+
+
+<div class="log">
+	<div id="log-left">
+		<img src="/Content/Image/star2.jpg" alt="快注册吧">
+	</div>
+	<div id="log-right">
+        <form action="" method="get">
+        <fieldset>
+            <legend>在此注册吧~</legend>
+            <table border="1">
+            <tr>
+            <td><label>用户名：</label></td><td><input name="username" type="text" placeholder="请在此输入用户名" /></td>
+            </tr>
+            <tr>
+              <td><label>密&nbsp;&nbsp;码：</label></td><td><input name="password" type="password" placeholder="请在此输入密码"/></td>
+            </tr>
+            <tr>
+              <td><label>密&nbsp;&nbsp;码：</label></td><td><input name="password2" type="password" placeholder="请再次输入密码"/></td>
+            </tr>
+            <tr>
+              <td><label>常用邮箱：</label></td><td><input name="email" type="email" placeholder="请在此输入您的常用邮箱"/></td>
+            </tr>
+            <tr>
+              <td><label>武汉常用地址 </label></td><td><select name="address"><option>洪山区</option><option>黄陂区</option><option>青山区</option><option>新洲区</option><option>江岸区</option><option>江汉区</option><option>东西湖区</option><option>蔡甸区</option><option>硚口区</option><option>武昌区</option><option>汉南区</option><option>江夏区</option><option>汉阳区</option></select></td>
+            </tr>
+            <tr>
+            <td><input name="reg" type="submit" value="注册"/></td>
+            </tr>
+            </table>
+        </fieldset>
+        </form>
+      </div>
+</div>
+		    
+           

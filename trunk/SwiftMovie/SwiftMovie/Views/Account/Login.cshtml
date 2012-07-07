@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "登录";
+}
+
+<link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/log.css")" />
+
+
+<div class="log">
+	<div id="log-left">
+		<img src="/Content/Image/star1.jpg" alt="快登录吧">
+	</div>
+	<div id="log-right">
+        <form action="" method="get">
+        <fieldset>
+        <legend>在此登录吧~</legend>
+        <br />
+		<span>用户名:</span><br/>
+		<input name="username" type="text" placeholder="请在此输入用户名"/>
+		<br /><br />
+		<span>密&nbsp;&nbsp;码:</span><br />
+		<input name="password" type="password" placeholder="请在此输入密码"/>
+		<br /><br />
+		<input name="login" type="submit" value="登录"/>      
+        </fieldset> 
+        </form>
+    </div>
+</div>

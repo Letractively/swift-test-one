@@ -1,0 +1,41 @@
+/* CSS Document */
+
+.log
+{
+width:980px;
+height:500px;
+margin:auto;
+}
+#log-left
+{
+float:left;
+width:500px;
+}
+
+#log-right
+{
+    margin-top:60px;
+width:350px;
+float:left;
+}
+
+
+legend
+{
+    padding:10px;
+    font-weight:bold;
+}
+
+fieldset
+{
+    border:#9b9993 1px solid;
+    padding:0 10px;
+    margin-top: 10px;
+    clear:left;
+}
+
+#log-right input[type=text], input[type=password], select, input[type=email]
+{
+    border:1px solid #8A8575;
+    width:200px;
+}
