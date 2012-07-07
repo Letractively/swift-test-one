@@ -11,16 +11,3 @@ F:\Swift\SwiftMovie\SwiftMovie\bin\IDAL.dll
 F:\Swift\SwiftMovie\SwiftMovie\bin\BLL.pdb
 F:\Swift\SwiftMovie\SwiftMovie\bin\DALFactory.pdb
 F:\Swift\SwiftMovie\SwiftMovie\bin\IDAL.pdb
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\SwiftMovie.dll
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\SwiftMovie.pdb
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\BLL.dll
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\Model.dll
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\DALFactory.dll
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\IDAL.dll
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\BLL.pdb
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\Model.pdb
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\DALFactory.pdb
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\bin\IDAL.pdb
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\obj\Debug\SwiftMovie.dll
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\obj\Debug\SwiftMovie.pdb
-D:\My Documents\我的文档\Visual Studio 2010\Projects\SwiftMovie\SwiftMovie\obj\Debug\ResolveAssemblyReference.cache

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace SqlServerDAL
 {
@@ -65,7 +66,12 @@ namespace SqlServerDAL
         public List<Model.Play> getPlayList(int movieID, int cinemaID)
         {
             List<Model.Play> lst = new List<Model.Play>();
-            DataTable dt = DBUtility.SqlHelper.executeTable("select * from Plays where MovieID="+movieID+"and CinemaID="+cinemaID+" order by PlayName", CommandType.Text, null);
+            string sql = "SELECT * FROM Plays WHERE MovieID=@MovieID AND CinemaID=@CinemaID ORDER BY PlayName";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@MovieID",Value=movieID},
+                new SqlParameter(){ParameterName="@CinemaID",Value=cinemaID}
+            };
+            DataTable dt = DBUtility.SqlHelper.executeTable(sql, CommandType.Text, sps);
             foreach (DataRow item in dt.Rows)
             {
                 Model.Play emp = new Model.Play()
@@ -85,10 +91,18 @@ namespace SqlServerDAL
         public bool addNewPlay(Model.Play play)
         {
             //List<Model.Play> lst = new List<Model.Play>();
-            string sql = "INSERT INTO Plays(PlayName,MovieID,CinemaID,Price) Values ('"
-                + play.PlayName + "','" + play.MovieID + "','" + play.CinemaID
-                + "','" + play.Price  + "')";
-            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            //string sql = "INSERT INTO Plays(PlayName,MovieID,CinemaID,Price) Values ('"
+            //    + play.PlayName + "','" + play.MovieID + "','" + play.CinemaID
+            //    + "','" + play.Price  + "')";
+            string sql = "INSERT INTO Plays(PlayID,PlayName,MovieID,CinemaID,Price) Values(@PlayID,@PlayName,@MovieID,@CinemaID,@Price)";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@PlayID",Value=play.PlayID},
+                new SqlParameter(){ParameterName="@PlayName",Value=play.PlayName},
+                new SqlParameter(){ParameterName="@MovieID",Value=play.MovieID},
+                new SqlParameter(){ParameterName="@CinemaID",Value=play.CinemaID},
+                new SqlParameter(){ParameterName="@Price",Value=play.Price}
+            };
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) return true;
             else return false;
             //throw new NotImplementedException();
@@ -107,10 +121,19 @@ namespace SqlServerDAL
         public bool editPlay(Model.Play play)
         {
             List<Model.Play> lst = new List<Model.Play>();
-            string sql = "Update Cinemas set PlayName=" + play.PlayID +
-                ",MovieID=" + play.MovieID + ",CinemaID=" + play.CinemaID
-                + ",Price=" + play.Price + ",where PlayID="+play.PlayID;
-            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            //string sql = "Update Cinemas set PlayName=" + play.PlayID +
+            //    ",MovieID=" + play.MovieID + ",CinemaID=" + play.CinemaID
+            //    + ",Price=" + play.Price + ",where PlayID="+play.PlayID;
+            string sql = "UPDATE Cinemas SET PlayName=@playName,MovieID=@movieID,CinemaID=@cinemaID,Price=@price WHERE PlayID=@playID";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@playName",Value=play.PlayName},
+                new SqlParameter(){ParameterName="@movieID",Value=play.MovieID},
+                new SqlParameter(){ParameterName="@cinemaID",Value=play.CinemaID},
+                new SqlParameter(){ParameterName="@price",Value=play.Price},
+                new SqlParameter(){ParameterName="@playID",Value=play.PlayID}
+            };
+
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) return true;
             else return false;
            // throw new NotImplementedException();

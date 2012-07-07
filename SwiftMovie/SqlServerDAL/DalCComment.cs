@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace SqlServerDAL
 {
@@ -37,8 +38,16 @@ namespace SqlServerDAL
         {
             List<Model.CComment> lst = new List<Model.CComment>();
             ccomment.CommTime = DateTime.Now;//获取系统时间
-            string sql = "INSERT INTO CComments (CinemaID,UserName,Comment,CommTime,Grade) Values ('"+ccomment.CinemaID+"','"+ccomment.UserName+"','"+ccomment.Comment+"','"+ccomment.CommTime+"','"+ccomment.Grade+"')";
-            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            //string sql = "INSERT INTO CComments (CinemaID,UserName,Comment,CommTime,Grade) Values ('"+ccomment.CinemaID+"','"+ccomment.UserName+"','"+ccomment.Comment+"','"+ccomment.CommTime+"','"+ccomment.Grade+"')";
+            string sql = "INSERT INTO CComments(CinemaID,UserName,Comment,CommTime,Grade)VALUES(@cinemaID,@userName,@comment,@commTime,@grade)";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@cinemaID",Value=ccomment.CinemaID},
+                new SqlParameter(){ParameterName="@userName",Value=ccomment.UserName},
+                new SqlParameter(){ParameterName="@comment",Value=ccomment.Comment},
+                new SqlParameter(){ParameterName="@commTime",Value=ccomment.CommTime},
+                new SqlParameter(){ParameterName="@grade",Value=ccomment.Grade}
+            };
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) return true;
             else return false;
             

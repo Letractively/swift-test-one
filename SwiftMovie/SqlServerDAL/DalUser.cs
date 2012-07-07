@@ -80,9 +80,17 @@ namespace SqlServerDAL
         public bool addNewUser(Model.User user)
         {
             List<Model.User> lst = new List<Model.User>();
-            string sql = "INSERT INTO Users(UserName,Password,Email,Address,BookState) Values ('" + user.UserName + "','" + user.Password
-                + "','" + user.Email + "','" + user.Address + "','" + user.BookState + "')";
-            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            //string sql = "INSERT INTO Users(UserName,Password,Email,Address,BookState) Values ('" + user.UserName + "','" + user.Password
+            //    + "','" + user.Email + "','" + user.Address + "','" + user.BookState + "')";
+            string sql = "INSERT INTO Users(UserName,Password,Email,Address,BookState) VALUES (@userName,@password,@email,@address,@bookState)";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@userName",Value=user.UserName},
+                new SqlParameter(){ParameterName="@password",Value=user.Password},
+                new SqlParameter(){ParameterName="@email",Value=user.Email},
+                new SqlParameter(){ParameterName="@address",Value=user.Address},
+                new SqlParameter(){ParameterName="@bookState",Value=user.BookState}
+            };
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) return true;
             else return false;
             //throw new NotImplementedException();
@@ -91,10 +99,19 @@ namespace SqlServerDAL
         public bool eidtUser(Model.User user)
         {
             List<Model.User> lst = new List<Model.User>();
-            string sql = "Update Users set UserID=" + user.UserID
-                + ",UserName=" + user.UserName + ",Password=" + user.Password
-                + ",Email=" + user.Email + ",Address" + user.Address + ",BookState=" + user.BookState ;
-            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, null);
+            //string sql = "Update Users set UserID=" + user.UserID
+            //    + ",UserName=" + user.UserName + ",Password=" + user.Password
+            //    + ",Email=" + user.Email + ",Address" + user.Address + ",BookState=" + user.BookState ;
+            string sql = "UPDATE Users SET UserName=@userName,Password=@password,Email=@email,Address=@address,BookState=@bookState WHERE UserID=@userID";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@userName",Value=user.UserName},
+                new SqlParameter(){ParameterName="@password",Value=user.Password},
+                new SqlParameter(){ParameterName="@email",Value=user.Email},
+                new SqlParameter(){ParameterName="@address",Value=user.Address},
+                new SqlParameter(){ParameterName="@bookState",Value=user.BookState},
+                new SqlParameter(){ParameterName="@userID",Value=user.UserID}
+            };
+            int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) return true;
             else return false;
             //throw new NotImplementedException();
