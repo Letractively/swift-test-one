@@ -54,13 +54,14 @@ namespace SqlServerDAL
             List<Model.PlayTime> lst = new List<Model.PlayTime>();
             //string sql = "INSERT INTO PlayTimes(MovieID,CinemaID,PlayTime,PlayState) Values ('" + playTime.MovieID + "','" + playTime.CinemaID
             //    + "','" + playTime.Playtime + "','" + playTime.PlayState + "')";
-            string sql = "INSERT INTO PlayTimes(MovieID.CinemaID,PlayTime,PlayState) VALUES (@movieID,@cinemaID,@playTime,@playState)";
+            string sql = "INSERT INTO PlayTimes(MovieID,CinemaID,PlayTime,PlayState) VALUES (@movieID,@cinemaID,@playTime,@playState)";
             SqlParameter[] sps = new SqlParameter[]{
                 new SqlParameter(){ParameterName="@movieID",Value=playTime.MovieID},
                 new SqlParameter(){ParameterName="@cinemaID",Value=playTime.CinemaID},
                 new SqlParameter(){ParameterName="@playTime",Value=playTime.Playtime},
                 new SqlParameter(){ParameterName="@playState",Value=playTime.PlayState}
             };
+            
 
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) return true;
@@ -137,7 +138,7 @@ namespace SqlServerDAL
                     Protagonist = item[4].ToString(),
                     Type = item[5].ToString(),
                     ReleaseDate = DateTime.Parse(item[6].ToString()),
-                    RunTime = float.Parse(item[7].ToString())
+                    RunTime = item[7].ToString()
                 };
                 movies.Add(movie);
             }
@@ -166,7 +167,7 @@ namespace SqlServerDAL
                     Protagonist = item[4].ToString(),
                     Type = item[5].ToString(),
                     ReleaseDate = DateTime.Parse(item[6].ToString()),
-                    RunTime = float.Parse(item[7].ToString())
+                    RunTime = item[7].ToString()
                 };
                 movies.Add(movie);
             }
@@ -194,7 +195,7 @@ namespace SqlServerDAL
                     Protagonist = item[4].ToString(),
                     Type = item[5].ToString(),
                     ReleaseDate = DateTime.Parse(item[6].ToString()),
-                    RunTime = float.Parse(item[7].ToString())
+                    RunTime = item[7].ToString()
                 };
                 movies.Add(movie);
             }
@@ -223,11 +224,27 @@ namespace SqlServerDAL
                     Protagonist = item[4].ToString(),
                     Type = item[5].ToString(),
                     ReleaseDate = DateTime.Parse(item[6].ToString()),
-                    RunTime = float.Parse(item[7].ToString())
+                    RunTime = item[7].ToString()
                 };
                 movies.Add(movie);
             }
             return movies;
+            //throw new NotImplementedException();
+        }
+
+
+        public bool isExist(int movieID, int cinemaID)
+        {
+            string sql = "SELECT * FROM PlayTimes WHERE MovieID=@movieID AND CinemaID=@cinemaID";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@movieID",Value=movieID},
+                new SqlParameter(){ParameterName="@cinemaID",Value=cinemaID}
+            };
+            if (DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps).Read())
+            {
+                return true;
+            }
+            return false;
             //throw new NotImplementedException();
         }
     }

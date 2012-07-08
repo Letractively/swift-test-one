@@ -37,7 +37,19 @@ namespace SpiderDAL
                     {
                         string strID = idTag.Attributes["HREF"].ToString();
                         Match idMatch = Regex.Match(strID, @"\d\d\d\d\d\d");
-                        playTime.MovieID = int.Parse(idMatch.Value);
+                        if (idMatch.Success)
+                        {
+                            playTime.MovieID = int.Parse(idMatch.Value);
+                        }
+                        else
+                        {
+                            Match strMatch = Regex.Match(strID, @"\d\d\d\d\d");
+                            if (strMatch.Success)
+                            {
+                                playTime.MovieID = int.Parse(strMatch.Value);
+                            }
+                        }
+                        
                     }
                     string strTime = playTag.NextSibling.NextSibling.ToPlainTextString();
                     char[] a = {'上','映'};

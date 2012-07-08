@@ -14,6 +14,6 @@ namespace Model
         public string Protagonist { get; set; }
         public string Type { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public float RunTime { get; set; }
+        public string RunTime { get; set; }
     }
 }

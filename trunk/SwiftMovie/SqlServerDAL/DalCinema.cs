@@ -54,7 +54,12 @@ namespace SqlServerDAL
             new SqlParameter(){ ParameterName="@CinemaTel", Value=cinema.CinemaTel},
             new SqlParameter(){ ParameterName="@CinemaGrade", Value=float.Parse(cinema.CinemaGrade)}
             };
-            int id = DBUtility.SqlHelper.executeScalar(sql2, CommandType.Text, sps);
+            for (int i = 0; i < sps.Length; i++)
+            {
+                if (sps[i].Value == null)
+                    sps[i].Value = DBNull.Value;
+            }
+            int id = DBUtility.SqlHelper.executeNonQuery(sql2, CommandType.Text, sps);
             if (id == -1)
             {
                 return false;
@@ -62,17 +67,22 @@ namespace SqlServerDAL
 
             string sql3 = "INSERT INTO CineNotice(CinemaID,Privilege,VIP) Values (@CinemaID,@Privilege,@VIP)";
             SqlParameter[] sps1 = new SqlParameter[]{
-            new SqlParameter(){ParameterName="@CinemaID",Value = id},
+            new SqlParameter(){ParameterName="@CinemaID",Value = cinema.CinemaID},
             new SqlParameter(){ParameterName ="@Privilege",Value = cinema.Privilege},
             new SqlParameter(){ParameterName ="@VIP",Value = cinema.VIP}
             };
+            for (int i = 0; i < sps1.Length; i++)
+            {
+                if (sps1[i].Value == null)
+                    sps1[i].Value = DBNull.Value;
+            }
             if (DBUtility.SqlHelper.executeNonQuery(sql3, CommandType.Text, sps1) != 1)
             {
                 return false;
             }
             string sql4 = "INSERT INTO CineFacility(CinemaID,Dining,Park,GameCenter,Intro3D,IntroVIP,Introduce) Values (@CinemaID,@Dining,@Park,@GameCenter,@Intro3D,@IntroVIP,@Introduce)";
             SqlParameter[] sps2 = new SqlParameter[]{
-            new SqlParameter(){ParameterName ="@CinemaID",Value = id},
+            new SqlParameter(){ParameterName ="@CinemaID",Value = cinema.CinemaID},
             new SqlParameter(){ParameterName="@Dining",Value=cinema.Dining},
             new SqlParameter(){ParameterName="@Park",Value=cinema.Park},
             new SqlParameter(){ParameterName="@GameCenter",Value=cinema.GameCenter},
@@ -80,22 +90,30 @@ namespace SqlServerDAL
             new SqlParameter(){ParameterName="@IntroVIP",Value=cinema.IntroVIP},
             new SqlParameter (){ParameterName ="@Introduce",Value=cinema.Introduce}
             };
+            for (int i = 0; i < sps2.Length; i++)
+            {
+                if (sps2[i].Value == null)
+                    sps2[i].Value = DBNull.Value;
+            }
             if (DBUtility.SqlHelper.executeNonQuery(sql4, CommandType.Text, sps2) != 1)
             {
                 return false;
             }
 
             List<Model.CinemaPic> cinemaPics = cinema.CinemaPic;
-            foreach (Model.CinemaPic c in cinemaPics)
+            if (cinemaPics != null)
             {
-                string sql5 = "INSERT INTO CinemaPic(CinemaID,PicURL) Values (@id,@PicURL)";
-                SqlParameter[] sps5 = new SqlParameter[]{
-                    new SqlParameter(){ParameterName ="@id",Value=id},
+                foreach (Model.CinemaPic c in cinemaPics)
+                {
+                    string sql5 = "INSERT INTO CinemaPic(CinemaID,PicURL) Values (@id,@PicURL)";
+                    SqlParameter[] sps5 = new SqlParameter[]{
+                    new SqlParameter(){ParameterName ="@id",Value=cinema.CinemaID},
                     new SqlParameter(){ParameterName="@PicURL",Value=c.PicURL}
                     };
-                if (DBUtility.SqlHelper.executeNonQuery(sql5, CommandType.Text, sps5) != 1)
-                {
-                    return false;
+                    if (DBUtility.SqlHelper.executeNonQuery(sql5, CommandType.Text, sps5) != 1)
+                    {
+                        return false;
+                    }
                 }
             }
 
@@ -177,6 +195,11 @@ namespace SqlServerDAL
                 new SqlParameter(){ParameterName="@CinemaName",Value=cinema.CinemaName},
                 new SqlParameter(){ParameterName="@CinemaID",Value=cinema.CinemaID}
             };
+            for (int i = 0; i < sps.Length; i++)
+            {
+                if (sps[i].Value == null)
+                    sps[i].Value = DBNull.Value;
+            }
             int id = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);//获取次电影院的ID
             if (id == -1)
             {
@@ -189,6 +212,11 @@ namespace SqlServerDAL
                 new SqlParameter(){ParameterName ="@VIP",Value=cinema.VIP},
                 new SqlParameter(){ParameterName="@id",Value=cinema.CinemaID}
             };
+            for (int i = 0; i < sps2.Length; i++)
+            {
+                if (sps2[i].Value == null)
+                    sps2[i].Value = DBNull.Value;
+            }
             if (DBUtility.SqlHelper.executeNonQuery(sql2, CommandType.Text, sps2) != 1)
             {
                 return false;
@@ -204,6 +232,11 @@ namespace SqlServerDAL
                 new SqlParameter(){ParameterName = "@Introduce",Value=cinema.Introduce}, 
                 new SqlParameter(){ParameterName = "@id",Value=cinema.CinemaID}
             };
+            for (int i = 0; i < sps3.Length; i++)
+            {
+                if (sps3[i].Value == null)
+                    sps3[i].Value = DBNull.Value;
+            }
             if (DBUtility.SqlHelper.executeNonQuery(sql3, CommandType.Text, sps3) != 1)
             {
                 return false;
@@ -213,6 +246,11 @@ namespace SqlServerDAL
             SqlParameter[] sps4 = new SqlParameter[]{
                 new SqlParameter(){ParameterName="@id",Value=cinema.CinemaID}
             };
+            for (int i = 0; i < sps4.Length; i++)
+            {
+                if (sps4[i].Value == null)
+                    sps4[i].Value = DBNull.Value;
+            }
             if (DBUtility.SqlHelper.executeNonQuery(sql4, CommandType.Text, sps4) == -1)
             {
                 return false;
@@ -245,6 +283,7 @@ namespace SqlServerDAL
             SqlParameter[] sps = new SqlParameter[]{
                 new SqlParameter(){ParameterName="@id",Value=id}
             };
+            //DataTable db = DBUtility.SqlHelper.executeTable(sql, CommandType.Text, sps);
             SqlDataReader sr = DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps);
             if (sr.Read())
             {
@@ -269,11 +308,19 @@ namespace SqlServerDAL
                     new SqlParameter(){ParameterName="@cinemaID",Value=cinema.CinemaID}
                 };
                 DataTable dt = DBUtility.SqlHelper.executeTable(sql1, CommandType.Text, sps2);
-                foreach (DataRow item in dt.Rows) {
-                    Model.CinemaPic pic = new Model.CinemaPic() { PicURL = item[0].ToString() };
-                    pics.Add(pic);
+                if (dt != null)
+                {
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        Model.CinemaPic pic = new Model.CinemaPic() { PicURL = item[0].ToString() };
+                        pics.Add(pic);
+                    }
+                    cinema.CinemaPic = pics;
                 }
-                cinema.CinemaPic = pics;
+                else
+                {
+                    cinema.CinemaPic = null;
+                }
 
                 return cinema;
             }
@@ -289,6 +336,21 @@ namespace SqlServerDAL
                 new SqlParameter(){ParameterName="@Name",Value=name}
             };
             return DBUtility.SqlHelper.executeScalar(sql,CommandType.Text,sps);
+        }
+
+
+        public bool isCinemaExist(int id)
+        {
+            string sql = "SELECT * FROM Cinemas WHERE CinemaID = @cinemaID";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@cinemaID",Value=id}
+            };
+            if (DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps).Read())
+            {
+                return true;
+            }
+            return false;
+            //throw new NotImplementedException();
         }
     }
 }

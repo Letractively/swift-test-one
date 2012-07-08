@@ -10,7 +10,11 @@ namespace DALFactory
 {
     public abstract class DataAccess
     {
-        static string path = ConfigurationManager.AppSettings["WebDAL"].ToString();
+        static string path ;//= ConfigurationManager.AppSettings["WebDAL"].ToString();
+        static DataAccess()
+        {
+            path = ConfigurationManager.AppSettings["WebDAL"].ToString();
+        }
         public static IUser createDalUser()
         {
             IUser user = (IUser)Assembly.Load(path).CreateInstance(path + ".DalUser");

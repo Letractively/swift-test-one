@@ -27,7 +27,7 @@ namespace SystemBLL
                     string protagonist = ms.getProtagonist(html);
                     string movieType = ms.getMovieType(html);
                     DateTime releaseDate = ms.getReleaseDate(html);
-                    float runTime = ms.getRunTime(html);
+                    string runTime = ms.getRunTime(html);
 
                     Movie movie = new Movie()
                     {

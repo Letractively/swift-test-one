@@ -94,7 +94,7 @@ namespace SqlServerDAL
             //string sql = "INSERT INTO Plays(PlayName,MovieID,CinemaID,Price) Values ('"
             //    + play.PlayName + "','" + play.MovieID + "','" + play.CinemaID
             //    + "','" + play.Price  + "')";
-            string sql = "INSERT INTO Plays(PlayID,PlayName,MovieID,CinemaID,Price) Values(@PlayID,@PlayName,@MovieID,@CinemaID,@Price)";
+            string sql = "INSERT INTO Plays(PlayID,PlayName,MovieID,CinemaID,Price) VALUES(@PlayID,@PlayName,@MovieID,@CinemaID,@Price)";
             SqlParameter[] sps = new SqlParameter[]{
                 new SqlParameter(){ParameterName="@PlayID",Value=play.PlayID},
                 new SqlParameter(){ParameterName="@PlayName",Value=play.PlayName},
@@ -146,8 +146,8 @@ namespace SqlServerDAL
             SqlParameter[] sps = new SqlParameter[]{
                 new SqlParameter(){ParameterName="@playID",Value=playID}
             };
-            DataTable db = DBUtility.SqlHelper.executeTable(sql, CommandType.Text, sps);
-            if (db != null)
+            SqlDataReader da = DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps);
+            if (da.Read())
             {
                 return true;
             }

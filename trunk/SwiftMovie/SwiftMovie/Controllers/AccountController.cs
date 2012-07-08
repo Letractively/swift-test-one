@@ -14,7 +14,6 @@ namespace SwiftMovie.Controllers
 
 
         // 注册
-
         public ActionResult Reg()
         {
             return View();

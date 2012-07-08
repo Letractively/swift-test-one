@@ -10,7 +10,7 @@ using SpiderDAL;
 
 namespace SystemBLL
 {
-    class SavePlay
+    public class SavePlay
     {
         public bool savePlays()
         {
@@ -30,6 +30,10 @@ namespace SystemBLL
 
                     List<Play> plays = new List<Play>();
                     plays = ps.getPlays(playURL);
+                    if (plays == null)
+                    {
+                        continue;
+                    }
                     foreach (Play play in plays)
                     {
                         if (!playDAL.getPlayById(play.PlayID))

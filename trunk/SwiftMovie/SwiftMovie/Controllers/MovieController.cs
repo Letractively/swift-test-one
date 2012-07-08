@@ -8,9 +8,7 @@ namespace SwiftMovie.Controllers
 {
     public class MovieController : Controller
     {
-        //
-        // GET: /Movie/
-
+       
         public ActionResult Index()
         {
             return View();
@@ -18,6 +16,8 @@ namespace SwiftMovie.Controllers
 
         public ActionResult Detail(int id)
         {
+            Model.Movie m =(new BLL.MovieBLL()).getMovieByID(id);
+            ViewData["Movie"] = new Model.Movie() { MovieName = "123", MovieID = 2 };//m;
             return View();
         }
 
