@@ -1,0 +1,77 @@
+﻿/* CSS Document */
+
+.con
+{
+width:980px;
+height:950px;
+
+}
+.com
+{
+
+width:250px;
+height:950px;
+float:left;
+background-color:#CCCCCC;
+border-radius:10px 10px 10px 10px;
+
+}
+.right
+{
+float:right;
+width:700px;
+height:750px;
+border:1px solid black;
+}
+.hot
+{
+width:700px;
+height:320px;
+font-size:24px;
+
+}
+.coming
+{
+width:700px;
+height:320px;
+border:1px solid black;
+
+}
+.rec
+{
+width:700px;
+height:200px;
+
+}
+
+
+
+#wrap{
+width:700px;
+height:250px;
+border:1px solid black;
+position:relative;
+left:0px;
+top:0px;
+background:#ffffff;
+overflow:hidden;
+}
+
+#wrap ul{
+margin:0px;
+padding:0px;
+position:absolute;
+top:0px;
+left:0px;
+}
+#wrap ul li{
+list-style:none;
+float:left;
+margin:0px 2px;
+}
+#wrap ul li img{
+width:175px;
+height:250px;
+cursor:pointer;
+}
+

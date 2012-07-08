@@ -1,0 +1,46 @@
+/* CSS Document */
+
+.firstLine
+{
+height:490px;
+width:960px;
+}
+.words
+{
+width:320px;
+height:480px;
+float:left;
+border:1px solid black;
+}
+
+.photo
+{
+width:500px;
+height:450px;
+border:1px solid black;
+
+}
+.around
+{
+width:960px;
+height:300px;
+
+}
+.event
+{
+width:960px;
+height:300px;
+}
+.sub-page
+{
+width:980px;
+margin:auto;
+}
+.contain
+{
+width:960px;
+height:1000px;
+margin:auto;
+border:1px solid black;
+padding:10px;
+}

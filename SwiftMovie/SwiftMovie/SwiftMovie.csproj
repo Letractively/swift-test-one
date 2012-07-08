@@ -128,6 +128,8 @@
     <Content Include="Scripts\cinemashow.js" />
     <Content Include="Scripts\film1.js" />
     <Content Include="Scripts\film2.js" />
+    <Content Include="Scripts\login-valid.js" />
+    <Content Include="Scripts\reg-valid.js" />
     <Content Include="Scripts\show.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
