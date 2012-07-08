@@ -52,7 +52,7 @@ namespace SqlServerDAL
             new SqlParameter(){ ParameterName="@Address", Value=cinema.Address},
             new SqlParameter(){ ParameterName="@CinemaMap", Value=cinema.CinemaMap},
             new SqlParameter(){ ParameterName="@CinemaTel", Value=cinema.CinemaTel},
-            new SqlParameter(){ ParameterName="@CinemaGrade", Value=cinema.CinemaGrade}
+            new SqlParameter(){ ParameterName="@CinemaGrade", Value=float.Parse(cinema.CinemaGrade)}
             };
             int id = DBUtility.SqlHelper.executeScalar(sql2, CommandType.Text, sps);
             if (id == -1)
