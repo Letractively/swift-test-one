@@ -19,6 +19,15 @@ namespace SpiderDAL
             {
                 return int.Parse(match.Value);
             }
+            else
+            {
+                string a = @"\d\d\d\d\d";
+                Match matchID = Regex.Match(url, a);
+                if (matchID.Success)
+                {
+                    return int.Parse(matchID.Value);
+                }
+            }
             return -1;
             //throw new NotImplementedException();
         }
@@ -90,21 +99,24 @@ namespace SpiderDAL
             string attributeV = "CONTENT";
 
             string rele = Spider.getAttValue(html, tag, attribute, value, attributeV);
+            string a = rele.Remove(0, 7);
+            if (int.Parse(a) == 0)
+            {
+                rele = rele.Remove(6);
+            }
             return DateTime.Parse(rele);
             //throw new NotImplementedException();
         }
 
-        public float getRunTime(string html)
+        public string getRunTime(string html)
         {
             string tag = "span";
             string attribute = "PROPERTY";
             string value = "v:runtime";
             string attributeV = "CONTENT";
 
-            string strTime = Spider.getAttValue(html, tag, attribute, value, attributeV);
-            char[] a = { '分', '钟' };
-            strTime = strTime.TrimEnd(a);
-            return float.Parse(strTime);
+            return Spider.getAttValue(html, tag, attribute, value, attributeV);
+            
             //throw new NotImplementedException();
         }
     }

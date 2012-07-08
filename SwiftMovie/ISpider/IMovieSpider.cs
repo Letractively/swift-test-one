@@ -14,6 +14,6 @@ namespace ISpider
         string getProtagonist(string html);
         string getMovieType(string html);
         DateTime getReleaseDate(string html);
-        float getRunTime(string html);
+        string getRunTime(string html);
     }
 }

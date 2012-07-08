@@ -15,14 +15,16 @@ namespace SwiftMovie.Controllers
 
         public ActionResult Index()
         {
-            //BLL.MovieBLL aMovieList = new MovieBLL();
-            //ViewData["MovieList"] = aMovieList;
+           List<Model.Movie> aMovieList = (new MovieBLL()).getMovieList();
+            ViewData["MovieList"] = aMovieList.Take(8).ToList();
 
-            //BLL.CinameBLL
+            List<Model.Cinema> cinemaList = (new CinemaBLL()).getCinemaList();
 
-            //List<Model.Cinema> a = new List<Cinema>() ;
-            //a.Add(new Cinema() { CinemaName="黑衣人II" });
-            //ViewData["Cinemas"] = a;
+            ViewData["Cinemas"] = (from s in cinemaList
+                    where s.CinemaPic != null
+                    orderby s.CinemaGrade descending
+                    select s).Take(3).ToList();
+            
 
             return View();
         }

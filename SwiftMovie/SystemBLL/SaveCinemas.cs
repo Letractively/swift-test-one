@@ -41,16 +41,17 @@ namespace SystemBLL
                     cs.getCinemaFive(infoHtml, out dining, out park, out game, out intro3D, out introVIP);
                     string introduce = cs.getIntroduce(infoHtml);
 
-                    string discountURL = cinemaFile + @"discount.txt";
+                    string discountURL = cinemaFile + @"\discount.txt";
                     string discountHtml = File.ReadAllText(discountURL);
                     string privilege = cs.getPrivilege(discountHtml);
                     string vip = cs.getVIP(discountHtml);
 
-                    Cinema cinema = new Cinema()
+                    Cinema cinemaNew = new Cinema()
                     {
                         CinemaID = cinemaID,
                         CinemaName = cinemaName,
                         Address = address,
+                        CinemaMap = "map",
                         CinemaTel = cinemaTel,
                         CinemaGrade = cinemaGrade.ToString(),
                         Privilege = privilege,
@@ -63,9 +64,9 @@ namespace SystemBLL
                         Introduce = introduce
                     };
                     IDAL.ICinema cinemaDAL = DALFactory.DataAccess.createDalCinema();
-                    if (cinemaDAL.getCinemaById(cinemaID) == null)
+                    if (!cinemaDAL.isCinemaExist(cinemaID))
                     {
-                        success = cinemaDAL.addCinema(cinema);
+                        success = cinemaDAL.addCinema(cinemaNew);
                     }
                 }
             }

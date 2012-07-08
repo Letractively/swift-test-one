@@ -10,6 +10,7 @@ namespace IDAL
     {
         List<Movie> getMovieList();
         Movie getMovieById(int id);
+        bool isExist(int movieID);
         bool addMovie(Movie movie);
         bool removeMovie(int id);
         bool editMovie(Movie movie);

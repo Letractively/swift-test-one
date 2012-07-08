@@ -16,7 +16,7 @@ namespace SqlServerDAL
             DataTable dt = DBUtility.SqlHelper.executeTable("select * from Movies", CommandType.Text, null);
             foreach (DataRow item in dt.Rows)
             {
-                Model.Movie emp = new Model.Movie() { MovieID = int.Parse(item[0].ToString()), MovieName = item[1].ToString(), CoverURL = item[2].ToString(),Director = item[3].ToString(), Protagonist = item[4].ToString(), Type = item[5].ToString(),ReleaseDate=DateTime.Parse(item[6].ToString()),RunTime=float.Parse(item[7].ToString()) };
+                Model.Movie emp = new Model.Movie() { MovieID = int.Parse(item[0].ToString()), MovieName = item[1].ToString(), CoverURL = item[2].ToString(),Director = item[3].ToString(), Protagonist = item[4].ToString(), Type = item[5].ToString(),ReleaseDate=DateTime.Parse(item[6].ToString()),RunTime=item[7].ToString() };
                 lst.Add(emp);
             }
             return lst;
@@ -42,6 +42,11 @@ namespace SqlServerDAL
                 new SqlParameter(){ParameterName="@ReleaseDate",Value=movie.ReleaseDate},
                 new SqlParameter(){ParameterName="@RunTime",Value=movie.RunTime},
             };
+            for (int i = 0; i < sps.Length; i++)
+            {
+                if (sps[i].Value == null)
+                    sps[i].Value = DBNull.Value;
+            }
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) 
                 return true;
@@ -77,7 +82,11 @@ namespace SqlServerDAL
                 new SqlParameter(){ParameterName="@id",Value=movie.MovieID},
                 new SqlParameter(){ParameterName="@Type",Value=movie.Type},
             };
-
+            for (int i = 0; i < sps.Length; i++)
+            {
+                if (sps[i].Value == null)
+                    sps[i].Value = DBNull.Value;
+            }
             int dt = DBUtility.SqlHelper.executeNonQuery(sql, CommandType.Text, sps);
             if (dt == 1) 
                 return true;
@@ -101,7 +110,7 @@ namespace SqlServerDAL
                     MovieName = item[1].ToString(), CoverURL = item[2].ToString(), 
                     Director = item[3].ToString(), Protagonist = item[4].ToString(), 
                     Type = item[5].ToString(), ReleaseDate = DateTime.Parse(item[6].ToString()), 
-                    RunTime = float.Parse(item[7].ToString()) };
+                    RunTime = item[7].ToString()};
                 lst.Add(emp);
             }
             return lst;
@@ -113,19 +122,33 @@ namespace SqlServerDAL
         {
             List<Model.Movie> lst = new List<Model.Movie>();
             //Model.Movie movie = new Model.Movie();
-            string sql = "SELECT * FROM Movies WHERE MovieID=@id";
+            string sql = "SELECT * FROM Movies WHERE MovieID=@movieID";
             SqlParameter[] sps = new SqlParameter[]{
-                new SqlParameter(){ParameterName = "@id",Value=id}
+                new SqlParameter(){ParameterName = "@movieID",Value=id}
             };
             SqlDataReader dr = DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps);
             if (dr.Read())
             {
-                Model.Movie movie = new Model.Movie() { MovieID = int.Parse(dr[0].ToString()), MovieName = dr[1].ToString(), CoverURL = dr[2].ToString(), Director = dr[3].ToString(), Protagonist = dr[4].ToString(), Type = dr[5].ToString(), ReleaseDate = DateTime.Parse(dr[6].ToString()), RunTime = float.Parse(dr[7].ToString()) };
+                Model.Movie movie = new Model.Movie() { MovieID = int.Parse(dr[0].ToString()), MovieName = dr[1].ToString(), CoverURL = dr[2].ToString(), Director = dr[3].ToString(), Protagonist = dr[4].ToString(), Type = dr[5].ToString(), ReleaseDate = DateTime.Parse(dr[6].ToString()), RunTime = dr[7].ToString() };
                 return movie;
             }
             else
                 return null;
            
+            //throw new NotImplementedException();
+        }
+
+
+        public bool isExist(int movieID)
+        {
+            string sql = "SELECT * FROM Movies WHERE MovieID=@movieID";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@movieID",Value=movieID}
+            };
+            if (DBUtility.SqlHelper.executeReader(sql, CommandType.Text, sps).Read())
+            {
+                return true;
+            } return false;
             //throw new NotImplementedException();
         }
     }

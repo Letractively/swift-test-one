@@ -61,6 +61,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CinecismController.cs" />
     <Compile Include="Controllers\CinemaController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Global.asax.cs">
@@ -131,6 +132,79 @@
     <Content Include="Scripts\login-valid.js" />
     <Content Include="Scripts\reg-valid.js" />
     <Content Include="Scripts\show.js" />
+    <Content Include="Views\Shared\css\cinema.css" />
+    <Content Include="Views\Shared\css\commend.css" />
+    <Content Include="Views\Shared\css\film.css" />
+    <Content Include="Views\Shared\css\film2.css" />
+    <Content Include="Views\Shared\css\footer.css" />
+    <Content Include="Views\Shared\css\head.css" />
+    <Content Include="Views\Shared\css\image\0305f6cca260f8bedb14cfb1b3558ca1.jpg" />
+    <Content Include="Views\Shared\css\image\1skin.jpg" />
+    <Content Include="Views\Shared\css\image\AD1.jpg" />
+    <Content Include="Views\Shared\css\image\b1.jpg" />
+    <Content Include="Views\Shared\css\image\b2.jpg" />
+    <Content Include="Views\Shared\css\image\b3.jpg" />
+    <Content Include="Views\Shared\css\image\brave.jpg" />
+    <Content Include="Views\Shared\css\image\button.jpg" />
+    <Content Include="Views\Shared\css\image\button1.png" />
+    <Content Include="Views\Shared\css\image\c1.jpg" />
+    <Content Include="Views\Shared\css\image\c2.jpg" />
+    <Content Include="Views\Shared\css\image\c3.jpg" />
+    <Content Include="Views\Shared\css\image\c4.jpg" />
+    <Content Include="Views\Shared\css\image\c5.jpg" />
+    <Content Include="Views\Shared\css\image\ca_hz_002.gif" />
+    <Content Include="Views\Shared\css\image\cc1.jpg" />
+    <Content Include="Views\Shared\css\image\ccc1.jpg" />
+    <Content Include="Views\Shared\css\image\ccc2.jpg" />
+    <Content Include="Views\Shared\css\image\ccc3.jpg" />
+    <Content Include="Views\Shared\css\image\ccc4.jpg" />
+    <Content Include="Views\Shared\css\image\ccc5.jpg" />
+    <Content Include="Views\Shared\css\image\f1.jpg" />
+    <Content Include="Views\Shared\css\image\f2.jpg" />
+    <Content Include="Views\Shared\css\image\f3.jpg" />
+    <Content Include="Views\Shared\css\image\f4.jpg" />
+    <Content Include="Views\Shared\css\image\f5.jpg" />
+    <Content Include="Views\Shared\css\image\f6.jpg" />
+    <Content Include="Views\Shared\css\image\f7.jpg" />
+    <Content Include="Views\Shared\css\image\f8.jpg" />
+    <Content Include="Views\Shared\css\image\first.jpg" />
+    <Content Include="Views\Shared\css\image\hero.jpg" />
+    <Content Include="Views\Shared\css\image\love.jpg" />
+    <Content Include="Views\Shared\css\image\ma.jpg" />
+    <Content Include="Views\Shared\css\image\mada.jpg" />
+    <Content Include="Views\Shared\css\image\ming.jpg" />
+    <Content Include="Views\Shared\css\image\nav_bg.gif" />
+    <Content Include="Views\Shared\css\image\nav_end.gif" />
+    <Content Include="Views\Shared\css\image\nav_home.gif" />
+    <Content Include="Views\Shared\css\image\nav_li_hover.gif" />
+    <Content Include="Views\Shared\css\image\nav_li_right.gif" />
+    <Content Include="Views\Shared\css\image\nav_l_bg.gif" />
+    <Content Include="Views\Shared\css\image\nav_r_bg.gif" />
+    <Content Include="Views\Shared\css\image\pained skin.jpg" />
+    <Content Include="Views\Shared\css\image\pained.jpg" />
+    <Content Include="Views\Shared\css\image\reward.jpg" />
+    <Content Include="Views\Shared\css\image\s1.jpg" />
+    <Content Include="Views\Shared\css\image\s2.jpg" />
+    <Content Include="Views\Shared\css\image\s3.jpg" />
+    <Content Include="Views\Shared\css\image\saierhao.jpg" />
+    <Content Include="Views\Shared\css\image\star1.jpg" />
+    <Content Include="Views\Shared\css\image\star2.jpg" />
+    <Content Include="Views\Shared\css\image\t2.jpg" />
+    <Content Include="Views\Shared\css\image\t7.jpg" />
+    <Content Include="Views\Shared\css\image\Titanic-3d-Jack-Rose.jpg" />
+    <Content Include="Views\Shared\css\image\Titanic-3d-Rose.jpg" />
+    <Content Include="Views\Shared\css\image\Titanic.jpg" />
+    <Content Include="Views\Shared\css\image\turnleft.jpg" />
+    <Content Include="Views\Shared\css\image\turnright.jpg" />
+    <Content Include="Views\Shared\css\image\use1.jpg" />
+    <Content Include="Views\Shared\css\index.css" />
+    <Content Include="Views\Shared\css\intro1.css" />
+    <Content Include="Views\Shared\css\list.css" />
+    <Content Include="Views\Shared\css\login.css" />
+    <Content Include="Views\Shared\css\reg.css" />
+    <Content Include="Views\Shared\css\roll.css" />
+    <Content Include="Views\Shared\css\rotate.css" />
+    <Content Include="Views\Shared\css\styles.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -168,6 +242,10 @@
       <Project>{8C594FCF-476D-4B50-9823-6E45F09D072B}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DALFactory\DALFactory.csproj">
+      <Project>{C217717C-2A96-4843-849B-C5694663B6D0}</Project>
+      <Name>DALFactory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{10E46777-5008-41B1-B88C-C717B56E5D27}</Project>
       <Name>Model</Name>
@@ -182,9 +260,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\About.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Movie\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Cinema\Index.cshtml" />
@@ -203,6 +278,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Cinema\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Comment\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Movie\Detail.cshtml" />
+    <None Include="Views\Shared\css\image\Thumbs.db" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

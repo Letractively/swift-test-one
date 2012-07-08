@@ -47,7 +47,19 @@ namespace SpiderDAL
                         {
                             string str = idTag.Attributes["HREF"].ToString();
                             Match match = Regex.Match(str, @"\d\d\d\d\d\d");
-                            strID = match.Value;//电影的ID
+                            if (match.Success)
+                            {
+                                strID = match.Value;//电影的ID
+                            }
+                            else
+                            {
+                                Match ma = Regex.Match(str, @"\d\d\d\d\d");
+                                if (ma.Success)
+                                {
+                                    strID = ma.Value;
+                                }
+                            }
+                            //strID = match.Value;//电影的ID
                         }
                     }
                     //获取影片播放时段列表
@@ -68,15 +80,26 @@ namespace SpiderDAL
                                 play.MovieID = int.Parse(strID);
                                 play.PlayID = int.Parse(playTag.Attributes["SHOWTIMEID"].ToString());
                                 string strTime = playTag.Attributes["TIME"].ToString();
+                                if (strTime == null || strTime == "")
+                                {
+                                    continue;
+                                }
                                 strTime = strTime.Trim();
                                 strTime = strTime.Remove(0, 10);
                                 play.PlayName = strTime.Trim();
                                 //ITag tag2 = (playTag.FirstChild as ITag);
                                 //string strPrice = tag2.FirstChild.ToPlainTextString(); //playTag.FirstChild.FirstChild.ToPlainTextString();
                                 string strPrice = playTag.FirstChild.NextSibling.FirstChild.NextSibling.ToPlainTextString();
-                                strPrice = strPrice.Trim();
-                                strPrice = strPrice.Remove(0,1);
-                                play.Price = float.Parse(strPrice);
+                                if (strPrice != null&&strPrice!=""&&strPrice!=" ")
+                                {
+                                    strPrice = strPrice.Trim();
+                                    strPrice = strPrice.Remove(0, 1);
+                                    play.Price = float.Parse(strPrice);
+                                }
+                                else
+                                {
+                                    play.Price = 0f;
+                                }
                                 plays.Add(play);
                             }
                         }

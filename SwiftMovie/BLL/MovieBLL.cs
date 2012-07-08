@@ -19,6 +19,11 @@ namespace BLL
             IDAL.IMovie lst = DALFactory.DataAccess.createDalMovie();
             return lst.getMovieList();
         }
+        public Model.Movie getMovieByID(int id)
+        {
+            IDAL.IMovie lst = DALFactory.DataAccess.createDalMovie();
+            return lst.getMovieById(id);
+        }
     }
 
 }
