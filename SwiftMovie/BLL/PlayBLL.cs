@@ -7,6 +7,13 @@ namespace BLL
 {
     class PlayBLL
     {
+        public List<Model.Play> getPlayList()
+        {
+            IDAL.IPlay lst = DALFactory.DataAccess.createDalPlay();
+            return lst.getPlayList();
+        }
+
+
          public List<Model.Play> getPlayList(int movieID)
          {
             IDAL.IPlay lst = DALFactory.DataAccess.createDalPlay();

@@ -5,17 +5,17 @@ using System.Text;
 
 namespace BLL
 {
-    class UserBLL
+    public class UserBLL
     {
         /// <summary>
         /// 注册新用户
         /// </summary>
         /// <param name="userName">用户名</param>
-        /// <param name="passwprd">用户密码</param>
+        /// <param name="password">用户密码</param>
         /// <param name="email">用户email地址</param>
         /// <param name="address">用户住址</param>
         /// <returns>用户名已存在，返回0；用户注册成功，返回1；否则返回-1.</returns>
-        public int register(string userName, string passwprd, string email, string address)
+        public int register(string userName, string password, string email, string address)
         {
             IDAL.IUser IUser = DALFactory.DataAccess.createDalUser();
             if (IUser.isUserExist(userName))
@@ -27,7 +27,7 @@ namespace BLL
                 Model.User User = new Model.User()
                 {
                     UserName = userName,
-                    Password = passwprd,
+                    Password = password,
                     Email = email,
                     Address = address,
                     BookState = true

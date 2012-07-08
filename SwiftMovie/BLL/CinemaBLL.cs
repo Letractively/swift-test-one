@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Model;
 
 namespace BLL
 {
-    class CinemaBLL
+    //获取电影院信息
+    public class CinemaBLL
     {
-        //public List<Model.Play> getPlayList(int movieID)
-        //{
-        //    IDAL.IPlay lst = DALFactory.DataAccess.createDalPlay();
-        //    return lst.getPlayListBymovieID(movieID);
-        //}
+        public List<Model.Cinema> getCinemaList()
+        {
+            IDAL.ICinema lst = DALFactory.DataAccess.createDalCinema();
+            return lst.getCinemaList();
+        }
+
+        public Cinema getCinemaById(int cinemaId)
+        {
+            IDAL.ICinema lst = DALFactory.DataAccess.createDalCinema();
+            return lst.getCinemaById(cinemaId);
+        }
+
     }
 }

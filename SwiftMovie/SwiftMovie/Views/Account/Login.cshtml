@@ -10,7 +10,7 @@
 		<img src="/Content/Image/star1.jpg" alt="快登录吧">
 	</div>
 	<div id="log-right">
-        <form action="" method="get">
+        <form action="" method="post">
         <fieldset>
         <legend>在此登录吧~</legend>
         <br />
@@ -23,5 +23,20 @@
 		<input name="login" type="submit" value="登录"/>      
         </fieldset> 
         </form>
+        @{
+            if (ViewData["isSuccess"] !=null && (bool)ViewData["isSuccess"]) 
+            {        
+                <script type="text/javascript">
+                    alert("登录成功！");
+                </script>
+            }
+            else if (ViewData["isSuccess"] !=null)
+            {
+                <script type="text/javascript">
+                     alert("登录失败！");
+                </script>
+            
+            }
+        }
     </div>
 </div>

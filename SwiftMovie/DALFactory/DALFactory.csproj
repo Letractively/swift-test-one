@@ -49,6 +49,10 @@
       <Project>{94A237F5-2268-4896-9A1C-C158DC4CAC79}</Project>
       <Name>IDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SqlServerDAL\SqlServerDAL.csproj">
+      <Project>{5B0E83BF-FD0B-4FC0-8D3D-D704601337FD}</Project>
+      <Name>SqlServerDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

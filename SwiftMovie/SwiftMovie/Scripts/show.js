@@ -283,17 +283,15 @@ var diap = {
 /* ==== create diaporama ==== */
 onload = function () {
 	/* ==== container, X, T, path, [image.src, text] ==== */
-	diap.init("screen", 4, 2, "", [
-		["css/image/1skin.jpg", "鐢荤毊2"],
-		["css/image/hero.jpg", "鎿掔埍璁?],
-		["css/image/brave.jpg", "鍕囨暍浼犺"],
-		["css/image/love.jpg", "鎿掔埍璁?],
-		["css/image/saierhao.jpg", "璧涘皵鍙?],
-		["css/image/first.jpg", "绗竴娆?],
-		["css/image/reward.jpg", "鎮祻"],
-		["css/image/ma.jpg", "椹揪鍔犳柉鍔?],
-
-
+    diap.init("screen", 4, 2, "", [
+		["Content/Image/1skin.jpg", "画皮2"],
+		["Content/Image/hero.jpg", "擒爱记"],
+		["Content/Image/brave.jpg", "勇敢传说"],
+		["Content/Image/love.jpg", "擒爱记"],
+		["Content/Image/saierhao.jpg", "赛尔号"],
+		["Content/Image/first.jpg", "第一次"],
+		["Content/Image/reward.jpg", "悬赏"],
+		["Content/Image/ma.jpg", "马达加斯加"],
 	]);
 }
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BLL
 {
-    class CinemaComm
+    public class CinemaComm
     {
         /// <summary>
         /// 获取电影院的评论，并按照时间降序排列

@@ -95,12 +95,3 @@ padding:0px;
     position: relative;
 }
 
-*{padding:0px;margin:0px;}
-* li{list-style:none;}
-a{text-decoration:none;color:#20537A;}
-a:hover{text-decoration:underline;}
-
-ol, ul 
-{
-list-style: none outside none;
-}
