@@ -138,5 +138,21 @@ namespace SqlServerDAL
             else return false;
            // throw new NotImplementedException();
         }
+
+
+        public bool getPlayById(int playID)
+        {
+            string sql = "SELECT * FROM Plays WHERE PlayID=@playID";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@playID",Value=playID}
+            };
+            DataTable db = DBUtility.SqlHelper.executeTable(sql, CommandType.Text, sps);
+            if (db != null)
+            {
+                return true;
+            }
+            return false;
+            //throw new NotImplementedException();
+        }
     }
 }

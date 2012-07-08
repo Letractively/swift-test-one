@@ -12,6 +12,7 @@ namespace IDAL
         List<Play> getPlayListBymovieID(int movieID);
         List<Play> getPlayListBycinemaID(int cinemaID);
         List<Play> getPlayList(int movieID, int cinemaID);
+        bool getPlayById(int playID);
 
         bool addNewPlay(Play play);
         bool removePlay(int playID);
