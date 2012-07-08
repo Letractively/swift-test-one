@@ -30,15 +30,6 @@ namespace BLL
              }
          }
 
-         //public class SortByGrade : IComparer<Model.Play>
-         //{
-         //    public int Compare(Model.Play x, Model.Play y)
-         //    {
-         //        return (x.Grade.CompareTo(y.Price));
-         //        //throw new NotImplementedException();
-         //    }
-         //}
-
          public List<Model.Play> sortPlayListByPrice(int movieID)
          {
              List<Model.Play> lst;

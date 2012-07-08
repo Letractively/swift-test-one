@@ -3,7 +3,7 @@
 }
 
 <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/log.css")" />
-
+<script src="@Url.Content("~/Scripts/login-valid.js")" type="text/javascript"></script>
 
 <div class="log">
 	<div id="log-left">
@@ -29,6 +29,7 @@
                 <script type="text/javascript">
                     alert("登录成功！");
                 </script>
+                
             }
             else if (ViewData["isSuccess"] !=null)
             {
