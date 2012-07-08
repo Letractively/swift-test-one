@@ -69,14 +69,46 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\cinema.css" />
+    <Content Include="Content\Image\0305f6cca260f8bedb14cfb1b3558ca1.jpg" />
+    <Content Include="Content\Image\1skin.jpg" />
+    <Content Include="Content\Image\brave.jpg" />
+    <Content Include="Content\Image\c1.jpg" />
+    <Content Include="Content\Image\c2.jpg" />
+    <Content Include="Content\Image\c3.jpg" />
+    <Content Include="Content\Image\c4.jpg" />
+    <Content Include="Content\Image\c5.jpg" />
+    <Content Include="Content\Image\cc1.jpg" />
+    <Content Include="Content\Image\f2.jpg" />
+    <Content Include="Content\Image\f3.jpg" />
+    <Content Include="Content\Image\f4.jpg" />
+    <Content Include="Content\Image\f5.jpg" />
+    <Content Include="Content\Image\f6.jpg" />
+    <Content Include="Content\Image\f7.jpg" />
+    <Content Include="Content\Image\f8.jpg" />
+    <Content Include="Content\Image\first.jpg" />
+    <Content Include="Content\Image\hero.jpg" />
     <Content Include="Content\Image\logo.png" />
+    <Content Include="Content\Image\love.jpg" />
+    <Content Include="Content\Image\ma.jpg" />
+    <Content Include="Content\Image\mada.jpg" />
+    <Content Include="Content\Image\pained skin.jpg" />
+    <Content Include="Content\Image\pained.jpg" />
+    <Content Include="Content\Image\reward.jpg" />
     <Content Include="Content\Image\s1.jpg" />
     <Content Include="Content\Image\s2.jpg" />
     <Content Include="Content\Image\s3.jpg" />
+    <Content Include="Content\Image\saierhao.jpg" />
     <Content Include="Content\Image\star1.jpg" />
     <Content Include="Content\Image\star2.jpg" />
+    <Content Include="Content\Image\Titanic-3d-Jack-Rose.jpg" />
+    <Content Include="Content\Image\Titanic-3d-Rose.jpg" />
+    <Content Include="Content\Image\Titanic.jpg" />
     <Content Include="Content\index.css" />
+    <Content Include="Content\intro1.css" />
     <Content Include="Content\log.css" />
+    <Content Include="Content\movie.css" />
+    <Content Include="Content\rotate.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
@@ -94,6 +126,8 @@
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Scripts\cinemashow.js" />
+    <Content Include="Scripts\film1.js" />
+    <Content Include="Scripts\film2.js" />
     <Content Include="Scripts\show.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -136,6 +170,10 @@
       <Project>{10E46777-5008-41B1-B88C-C717B56E5D27}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SqlServerDAL\SqlServerDAL.csproj">
+      <Project>{5B0E83BF-FD0B-4FC0-8D3D-D704601337FD}</Project>
+      <Name>SqlServerDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
@@ -143,12 +181,11 @@
   <ItemGroup>
     <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Views\Cinema\Index.cshtml" />
+    <Content Include="Views\Movie\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Cinema\Details.cshtml" />
+    <Content Include="Views\Cinema\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Reg.cshtml" />
@@ -158,6 +195,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Movie\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cinema\Comment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cinema\Detail.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

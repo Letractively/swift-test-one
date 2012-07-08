@@ -16,5 +16,10 @@ namespace SwiftMovie.Controllers
             return View();
         }
 
+        public ActionResult Detail(int id)
+        {
+            return View();
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Model;
+using BLL;
 
 namespace SwiftMovie.Controllers
 {
@@ -14,9 +15,14 @@ namespace SwiftMovie.Controllers
 
         public ActionResult Index()
         {
-            List<Model.Cinema> a = new List<Cinema>() ;
-            a.Add(new Cinema() { CinemaName="黑衣人II" });
-            ViewData["Cinemas"] = a;
+            //BLL.MovieBLL aMovieList = new MovieBLL();
+            //ViewData["MovieList"] = aMovieList;
+
+            //BLL.CinameBLL
+
+            //List<Model.Cinema> a = new List<Cinema>() ;
+            //a.Add(new Cinema() { CinemaName="黑衣人II" });
+            //ViewData["Cinemas"] = a;
 
             return View();
         }

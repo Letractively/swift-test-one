@@ -7,9 +7,10 @@ body
 	font-family: 微软雅黑,Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	background-color: #FBF9EF;
+	margin:auto;
 	margin-top:10px;
 	margin-bottom:20px;
-	width:900px;
+	width:980px;
 }
 
 
@@ -42,14 +43,6 @@ body
 #header img
 {
     float:left;
-}
-
-
-#main
-{
-	overflow: hidden;
-	padding: 0 0 15px 10px;
-	float: left;
 }
 
 
@@ -90,8 +83,9 @@ body
     display: block;
     height: 35px;
     margin-top: 50px;
+    text-align: left;
     text-shadow: 0 1px 0 white;
-    width: 100%;
+    width: 980;
 }
 .menu ul {
     margin-left: 0;
@@ -107,7 +101,6 @@ body
     font-weight: bold;
     margin-top: 0;
     padding: 7.5px 0.75em;
-    text-align: center;
     text-decoration: none;
     width: 6.8em;
 }
@@ -124,7 +117,7 @@ body
 width:100%;
 margin:auto;
 margin-top:5px;
-text-align:right
+text-align:right;
 }
 
 ul#top-right
