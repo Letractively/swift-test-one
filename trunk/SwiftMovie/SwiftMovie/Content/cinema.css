@@ -34,23 +34,67 @@ height:550px;
 /* end of Index */
 
 
-/* Cinema/Detail µÄ css */
-#navbox
+/* Cinema/Detail*/
+
+.navbox
 {
+font-size:large;
 float:left;
-padding-top:100px;
-padding-left:100px;    
+height:400px;
+width:200px;   
 }
 
-ul#nav {    
+
+
+.tablist   
+{
+    float:left;
+    width:980px;
+    height:auto;
+        position:relative;  
+        margin:10px auto;  
+        min-height:600px;  
+    }  
+      
+    .tab_body   
+    {
+        float:right;
+        position:relative;  
+        padding:0 20px;
+        width:720px;  
+        height:500px;  
+    }  
+      
+    /* this example style begin */  
+    .tab_content {  
+        position: absolute;/*set content box as absolute*/  
+        /* content style begin*/  
+        width:700px;  
+        min-height:500px;  
+        padding:15px;  
+        border:1px solid #91a7b4;  
+        border-radius:3px;  
+        box-shadow:0 2px 3px rgba(0,0,0,0.1);  
+        font-size:1.2em;  
+        line-height:1.5em;  
+        color:#666;  
+        background:#fff;  
+    }  
+      
+      
+    #tab1:target, #tab2:target, #tab3:target, #tab4:target{  
+        z-index: 1;  
+    }  
+      
+      ul#nav {    
 list-style: none;    
 display: block;    
 width: 200px;    
 position: relative;    
-top: 100px;    
-left: 100px;    
+top: 50px;    
+left: 50px;    
 padding: 60px 0 60px 0;    
-background: url(shad2.png) no-repeat;    
+background: url(/Content/Image/shad2.png) no-repeat;    
 -webkit-background-size: 50% 100%; }
 
 ul#nav li a {
@@ -65,23 +109,8 @@ width: 100px;
 text-decoration: none;    
 -webkit-box-shadow: 2px 2px 4px #888; }
 
-ul.nav li a:hover {    
-background: #ebebeb url(border.png) no-repeat;    
+ul#nav li a:hover {    
+background: #ebebeb url(/Content/Image/border.png) no-repeat;    
 color: #67a5cd;   
 padding: 7px 15px 7px 30px; 
 }
-
-.tab_content {  
-    float:right;
-    /* content style begin*/  
-    width:600px;  
-    height:300px;  
-    padding:15px;  
-    border:1px solid #91a7b4;  
-    border-radius:3px;  
-    box-shadow:0 2px 3px rgba(0,0,0,0.1);  
-    font-size:1.2em;  
-    line-height:1.5em;  
-    color:#666;  
-    background:#fff;  
-}  

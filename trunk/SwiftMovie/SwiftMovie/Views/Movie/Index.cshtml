@@ -63,17 +63,16 @@
 						<div class="Cont" id="ISL_Cont_1">
 						<!-- 图片列表 begin -->
 
-								<div class=box>
+								
                                 @{
                                     foreach (Model.Movie sm in sms)
-                                    {
+                                    {<div class=box>
 								<a class="imgBorder" href="/Movie/Detail?id=@sm.MovieID" target=_blank><img src="@sm.CoverURL" ></a> 
 								<p><a href="/Movie/Soon?id=@sm.MovieID" target=_blank>@sm.MovieName</a></p>
+                                     </div>
                                     }
-                                    }
-                                </div>
-								
-								
+                                 }
+
 								<!-- 图片列表 end -->
 					  </div>
 					<div class=RightBotton id=RightArr><img src="/Content/Image/turnright.jpg"></div></div>				

@@ -38,6 +38,130 @@ border:1px solid black;
 }
 
 
+A 
+{	
+TEXT-DECORATION: underline
+}
+
+A:link {	COLOR: #0051b4}
+A:visited {	COLOR: #333}
+A:hover {	COLOR: #f00}
+A:active {	COLOR: #f00}
+
+
+.F14lists LI SPAN {	FONT-SIZE: 9px; COLOR: #533826}
+.FixTitle A:link {	COLOR: #0736aa; TEXT-DECORATION: none}
+.FixTitle A:visited {	COLOR: #0736aa; TEXT-DECORATION: none}
+.FixTitle A:hover {	TEXT-DECORATION: underline}
+
+.FixTitle 
+{	
+BORDER: #a2d1ff 1px solid;
+
+HEIGHT: 30px;
+OVERFLOW: hidden;
+}
+
+
+.FixTitle H3 
+{	
+PADDING-LEFT: 30px; 
+FONT-SIZE: 14px;  
+FLOAT: left; 
+COLOR: #0736aa
+}
+
+.FixTitle SPAN 
+{	
+PADDING-RIGHT: 5px; 
+FLOAT: right}
+
+
+.blk_29 
+{	
+BORDER: #a1d2fd 1px solid;  
+
+PADDING-RIGHT: 0px;
+PADDING-LEFT: 0px; 
+PADDING-BOTTOM: 2px; 
+PADDING-TOP: 0px; 
+ 
+ZOOM: 1; 
+POSITION: relative;
+OVERFLOW: hidden;
+}
+
+
+.blk_29 .LeftBotton
+{	
+BACKGROUND: url(/Content/Image/turnleft.jpg) no-repeat 0px 0px; 
+LEFT: 5px; 
+FLOAT: left; 
+WIDTH: 11px;
+CURSOR: pointer; 
+POSITION: absolute;
+TOP: 10px; 
+HEIGHT: 114px
+}
+
+
+.blk_29 .RightBotton 
+{	
+RIGHT: 13px; 
+BACKGROUND: url(/Content/Image/turnright.jpg) no-repeat -11px 0px; 
+FLOAT: right; 
+WIDTH: 11px; 
+CURSOR: pointer; 
+POSITION: absolute; 
+TOP: 10px; 
+HEIGHT: 114px
+}
+
+
+.blk_29 .Cont 
+{	
+MARGIN: 0px auto; 
+OVERFLOW: hidden; 
+WIDTH: 700px; 
+PADDING-TOP: 5px
+}
+
+
+.blk_29 .box 
+{	
+FLOAT: left; 
+WIDTH: 180px; 
+TEXT-ALIGN: center
+}
+
+.blk_29 .box IMG 
+{	
+BORDER: 1px solid #add2fc; 
+
+DISPLAY: block; 
+PADDING-LEFT: 3px;
+PADDING-RIGHT: 3px;
+PADDING-TOP: 3px;   
+
+MARGIN: 0px auto; 
+}
+
+.blk_29 .box A:hover IMG 
+{	
+BORDER:1px solid #5385cc ;
+}
+.blk_29 .box P 
+{	
+MARGIN: 6px auto 0px; 
+WIDTH: 97px; 
+LINE-HEIGHT: 20px
+}
+
+
+
+
+
+
 
 
 #wrap{
