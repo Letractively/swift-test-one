@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Soon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.Movie m =
+    (Model.Movie)ViewData["Movie"];
+    List<Model.Cinema> cs = (List<Model.Cinema>)ViewData["Cinemas"];
+}
+
+<div class="information">        
+		<div class="copy">         <!--电影海报-->
+		<img src="@m.CoverURL" alt="@m.MovieName">		
+
+		</div>
+		<div class="inm">                      <!--电影简介-->
+		<dt>电影名称:&nbsp;@m.MovieName</dt>
+		<dd>导演:&nbsp;@m.Director</dd>
+        <dd>主演:&nbsp;@m.Protagonist</dd>
+        <dd>时长:&nbsp;@m.RunTime 分钟</dd>
+        <dd>上映时间:&nbsp;@m.ReleaseDate</dd>
+		</div>
+		<div class="view">                    <!--电影预告片-->
+		</div>
+	</div>
+<hr/>
+<div class="show">         <!--场次信息-->
+	<span class="time"><!-- #BeginDate format:fCh2 -->@string.Format("{0}年{1}月{2}日   {3}", DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,DateTime.Today.DayOfWeek) <!-- #EndDate -->
+	</span>
+	<div class="rate">
+<select name=""><option>按最低价排序</option><option>按影院评分排序</option><option>按地理位置排序</option></select>
+	<input name="" type="button" value="排序">
+	</div>
+	<hr>
+	
+	<div class="each">
+    @{
+        foreach (Model.Cinema c in cs)
+        {
+		<div class="tu">
+			<span><a href="../Cinema/Detail?id=@c.CinemaID">@c.CinemaName</a></span>
+            @{
+            if (c.CinemaPic.Count > 0)
+            { 
+                <dd><a href="../Cinema/Detail?id=@c.CinemaID"><img src="@c.CinemaPic[0].PicURL" /></a></dd>
+            }
+            }
+            <dd>地址:&nbsp;@c.Address</dd>
+            <dd>电话:&nbsp;@c.CinemaTel</dd>
+            <!--
+			<img src="../css/image/use1.jpg">
+            -->
+		</div>
+        <hr />
+        }
+        }
+	</div><hr>
+	</div>
+
+

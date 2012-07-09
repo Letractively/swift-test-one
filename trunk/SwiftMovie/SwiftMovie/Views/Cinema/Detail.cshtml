@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "影院介绍";
+    Model.Cinema c = (Model.Cinema)ViewData["Cinema"];
 }
 
 <link rel="stylesheet" type="text/css" href="/Content/cinema.css">
@@ -12,11 +13,30 @@
             <li><a href="#tab1">影院信息</a></li>
             <li><a href="#tab2">周边信息</a></li>
             <li><a href="#tab3">优惠活动</a></li>
-            <li><a href="#tab4">会员评价</a></li>
+            <li><a href="#tab4">会员活动</a></li>
         </ul>
     </div>
-    <div id="tab1" class="tab_content"></div>
-    <div id="tab2" class="tab_content">adsfsdhjgasdhg</div>
-    <div id="tab3" class="tab_content">adsfsdhjgasdhg</div>
-    <div id="tab4" class="tab_content">adsfsdhjgasdhg</div>
+    <div id="tab1" class="tab_content">
+    <div>@c.CinemaName</div>
+    @{
+        if(c.CinemaPic.Count>0)
+        {<div><img src="@c.CinemaPic[0].PicURL" /></div>}
+     }
+     <div>@c.CinemaGrade.Remove(3)</div>
+     <div>@c.CinemaTel</div>
+     <div>@c.Address</div>
+    </div>
+    <div id="tab2" class="tab_content">
+    <div>@c.Dining</div>
+    <div>@c.Park</div>
+    <div>@c.GameCenter</div>
+    <div>@c.Intro3D</div>
+    <div>@c.IntroVIP</div>
+    </div>
+    <div id="tab3" class="tab_content">
+    <div>@c.Privilege</div>
+    </div>
+    <div id="tab4" class="tab_content">
+    <div>@c.VIP</div>
+    </div>
 </div>

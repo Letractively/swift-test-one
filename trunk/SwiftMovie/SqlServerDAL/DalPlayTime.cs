@@ -247,5 +247,33 @@ namespace SqlServerDAL
             return false;
             //throw new NotImplementedException();
         }
+
+
+        public List<Model.PlayTime> getPlayTimeList(int movieID)
+        {
+            List<Model.PlayTime> playTimes = new List<Model.PlayTime>();
+            string sql = "SELECT * FROM PlayTimes WHERE MovieID=@movieID";
+            SqlParameter[] sps = new SqlParameter[]{
+                new SqlParameter(){ParameterName="@movieID",Value=movieID}
+            };
+            DataTable dt = DBUtility.SqlHelper.executeTable(sql, CommandType.Text, sps);
+            if (dt != null)
+            {
+                foreach (DataRow item in dt.Rows)
+                {
+                    Model.PlayTime playTime = new Model.PlayTime()
+                    {
+                        PlaytimeID = int.Parse(item[0].ToString()),
+                        MovieID = int.Parse(item[1].ToString()),
+                        CinemaID = int.Parse(item[2].ToString()),
+                        Playtime = DateTime.Parse(item[3].ToString()),
+                        PlayState = bool.Parse(item[4].ToString())
+                    };
+                    playTimes.Add(playTime);
+                }
+            }
+            return playTimes;
+            //throw new NotImplementedException();
+        }
     }
 }
