@@ -1,0 +1,87 @@
+
+/* Cinema/IndexµÄcss */
+.contain
+{
+width:980px;
+height:600px;
+margin:auto;
+}
+
+.left
+{
+    padding:10px 10px 10px 10px;
+width:250px;
+height:550px;
+text-align:left;
+float:left;
+}
+
+.map
+{
+    padding:10px 10px 10px 10px;
+float:right;
+width:650px;
+height:550px;
+}
+
+.accordion a{display:block;padding:4px 10px;background-color:#333;color:#eee;text-decoration:none}
+.accordion a:hover{background-color:#999}
+.accordion div{background-color:#ccc;color:#222;}
+.accordion div p{padding:10px;}
+ 
+#accordion div{height:0;overflow:hidden;-webkit-transition:height 600ms ease}
+#accordion div:target{height:auto;}
+/* end of Index */
+
+
+/* Cinema/Detail µÄ css */
+#navbox
+{
+float:left;
+padding-top:100px;
+padding-left:100px;    
+}
+
+ul#nav {    
+list-style: none;    
+display: block;    
+width: 200px;    
+position: relative;    
+top: 100px;    
+left: 100px;    
+padding: 60px 0 60px 0;    
+background: url(shad2.png) no-repeat;    
+-webkit-background-size: 50% 100%; }
+
+ul#nav li a {
+-webkit-transition: all 0.3s ease-out;    
+background: #cbcbcb url(border.png) no-repeat;    
+color: #174867;    
+padding: 7px 15px 7px 15px;    
+-webkit-border-top-right-radius: 10px;    
+-webkit-border-bottom-right-radius: 10px;    
+width: 100px;   
+ display: block;    
+text-decoration: none;    
+-webkit-box-shadow: 2px 2px 4px #888; }
+
+ul.nav li a:hover {    
+background: #ebebeb url(border.png) no-repeat;    
+color: #67a5cd;   
+padding: 7px 15px 7px 30px; 
+}
+
+.tab_content {  
+    float:right;
+    /* content style begin*/  
+    width:600px;  
+    height:300px;  
+    padding:15px;  
+    border:1px solid #91a7b4;  
+    border-radius:3px;  
+    box-shadow:0 2px 3px rgba(0,0,0,0.1);  
+    font-size:1.2em;  
+    line-height:1.5em;  
+    color:#666;  
+    background:#fff;  
+}  
