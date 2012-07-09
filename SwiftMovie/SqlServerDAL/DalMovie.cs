@@ -98,9 +98,9 @@ namespace SqlServerDAL
         public List<Model.Movie> getMovieListByName(string name)
         {
             List<Model.Movie> lst = new List<Model.Movie>();
-            string sql = "SELECT * FROM Movies WHERE (MovieName LIKE %@name%) ORDER BY MovieName";
+            string sql = "SELECT * FROM Movies WHERE (MovieName LIKE @movieName) ORDER BY MovieName";
             SqlParameter[] sps = new SqlParameter[]{
-                new SqlParameter(){ParameterName="@name",Value=name}
+                new SqlParameter(){ParameterName="@movieName",Value="%"+name+"%"}
             };
             DataTable dt = DBUtility.SqlHelper.executeTable(sql, 
                 CommandType.Text, sps);

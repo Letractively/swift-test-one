@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BLL
 {
-    class PlayBLL
+    public class PlayBLL
     {
         public List<Model.Play> getPlayList()
         {
