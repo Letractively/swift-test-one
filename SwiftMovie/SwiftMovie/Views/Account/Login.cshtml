@@ -20,7 +20,7 @@
 		<span>密&nbsp;&nbsp;码:</span><br />
 		<input name="password" type="password" placeholder="请在此输入密码"/>
 		<br /><br />
-		<input name="login" type="submit" value="登录"/>      
+		<input name="login" type="submit" value="登录" onclick="check()"/>      
         </fieldset> 
         </form>
         @{
@@ -28,6 +28,7 @@
             {        
                 <script type="text/javascript">
                     alert("登录成功！");
+                    window.history.back(-1);
                 </script>
                 
             }

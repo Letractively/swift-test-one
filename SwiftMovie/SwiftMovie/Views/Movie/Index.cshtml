@@ -13,11 +13,11 @@
 		<p style="font-size:36px;color:#311111">电影の评论</p>
 		<marquee direction="up" scrollamount="2" scrolldelay="10" onmouseover="this.stop()" onmouseout="this.start()">
 		@{
-            BLL.CinecismBLL comList = new BLL.CinecismBLL();
-            foreach( Model.Cinecism item in comList.getCinecismList().Take(10) )
+            List<Model.Cinecism> cinecismList = (List<Model.Cinecism>)ViewData["CommentList"];
+            foreach (Model.Cinecism c in cinecismList)
             {
-                <h3>@item.UserName 说：</h3>
-                <p> @item.Comment </p>
+                <h3>@c.UserName 说：</h3>
+                <p> @c.Comment </p>
                 <hr/>
             }
          }

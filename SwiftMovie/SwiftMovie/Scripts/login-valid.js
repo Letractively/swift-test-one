@@ -2,6 +2,7 @@ function check()
 {
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
+    var regu=/^([a-zA-Z0-9]|[._]){4,10}$/;
 	
 	if(username.length == 0)
 	{
@@ -15,6 +16,11 @@ function check()
 		return false;
 	}
 
+    if (!regu.exec(username)) 
+    {
+        alert(" ‰»Î¥ÌŒÛ");
+        return false;
+    }
 	
 	
 	//if((username.length < 6) || (username.length > 20))

@@ -31,13 +31,17 @@
             </tr>
             <tr><td>我要订阅电影资讯</td><td><input name="Subscribe" type="checkbox" value="true" checked /></td></tr>
             <tr>
-            <td><input name="reg" type="submit" value="注册"/></td>
+            <td><input name="reg" type="submit" value="注册" /></td><span id="tip"></span>
             </tr>
             </table>
             @{
                 if ( ViewData["isSuccess"] != null && (int)ViewData["isSuccess"] == 1 )
                 {
-                    <script type="text/javascript">alert("注册成功！")</script>                    
+                    <script type="text/javascript">
+                        alert("注册成功！");
+                        window.location.href = "/Account/Login";
+                    </script> 
+                                      
                 }
             }
         </fieldset>
