@@ -28,6 +28,13 @@ namespace SwiftMovie.Controllers
 
             return View();
         }
+        public ActionResult Search()
+        {
+            string name = Request["content"].ToString();
+            List<Model.Movie> MovieList = (new MovieBLL()).getMovieListByName(name);
+            ViewData["SearchMovies"] = MovieList.ToList();
+            return View();
+        }
 
         public ActionResult About()
         {

@@ -1,5 +1,8 @@
 ﻿@{
     ViewBag.Title = "热播电影";
+    List<Model.Movie> ms = (List<Model.Movie>)ViewData["PlayMovies"];
+    List<Model.Movie> sms = (List<Model.Movie>)ViewData["SoonMovies"];
+    List<Model.Cinecism> ccs = (List<Model.Cinecism>)ViewData["Cinecisms"];
 }
 
     <link href="@Url.Content("~/Content/movie.css")" rel="stylesheet" type="text/css" />
@@ -13,11 +16,10 @@
 		<p style="font-size:36px;color:#311111">电影の评论</p>
 		<marquee direction="up" scrollamount="2" scrolldelay="10" onmouseover="this.stop()" onmouseout="this.start()">
 		@{
-            List<Model.Cinecism> cinecismList = (List<Model.Cinecism>)ViewData["CommentList"];
-            foreach (Model.Cinecism c in cinecismList)
+            foreach (Model.Cinecism cc in ccs)
             {
-                <h3>@c.UserName 说：</h3>
-                <p> @c.Comment </p>
+                <h3>@cc.UserName 说：</h3>
+                <p> @cc.Comment </p>
                 <hr/>
             }
          }
@@ -33,20 +35,13 @@
 			<div id="wrap">
 				<ul>
                 @{
-                   // BLL.MovieBLL mlist = new BLL.MovieBLL();
-                    //mlist.
+                    foreach (Model.Movie m in ms)
+                    {
+					<li><a href="/Movie/Detail?id=@m.MovieID"><img src="@m.CoverURL" alt="@m.MovieName" /></a></li>
                     }
-					<li><img src="../css/image/f1.jpg" alt="pic one" /></li>
-					<li><img src="../css/image/f2.jpg" alt="pic two" /></li>
-					<li><img src="../css/image/f3.jpg" alt="pic three" /></li>
-					<li><img src="../css/image/f4.jpg" alt="pic four" /></li>
+                    }
 				</ul>
 			</div>
-			
-					
-					
-			
-			
 			</div>
 			
 			
@@ -69,44 +64,16 @@
 						<!-- 图片列表 begin -->
 
 								<div class=box>
-								<a class="imgBorder" href="list.html" target=_blank><img src="../css/image/f1.jpg" ></a> 
-								<p><a href="/" target=_blank>中国北京</a></p>
+                                @{
+                                    foreach (Model.Movie sm in sms)
+                                    {
+								<a class="imgBorder" href="/Movie/Detail?id=@sm.MovieID" target=_blank><img src="@sm.CoverURL" ></a> 
+								<p><a href="/Movie/Soon?id=@sm.MovieID" target=_blank>@sm.MovieName</a></p>
+                                    }
+                                    }
                                 </div>
 								
-								<div class=box><A class=imgBorder href="/" target=_blank><img src="../css/image/f2.jpg"  
-								 ></A> 
-								<p><A href="/" 
-								target=_blank>生态旅游区</A></p></div>
 								
-								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f3.jpg" 
-								 ></A> 
-								<p><A href="/" 
-								target=_blank>奥运馆场</A></p></div>
-								
-								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f4.jpg"  
-								 ></A> 
-								<p><A href="/" 
-								target=_blank>瑞典山脉</A></p></div>
-								
-								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f5.jpg" 
-								 ></A> 
-								<p><A href="/" 
-								target=_blank>体育旅游</A></p></div>
-								
-								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f6.jpg"  
-								 ></A> 
-								<p><A href="/" 
-								target=_blank>福建武山</A></p></div>
-								
-								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f7.jpg"  
-								 ></A> 
-								<p><A href="/" 
-								target=_blank>中国张家界</A></p></div>
-								
-								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f8.jpg"  
-								 ></A> 
-								<p><A href="/" 
-								target=_blank>奥运开幕式</A></p></div>
 								<!-- 图片列表 end -->
 					  </div>
 					<div class=RightBotton id=RightArr><img src="/Content/Image/turnright.jpg"></div></div>				

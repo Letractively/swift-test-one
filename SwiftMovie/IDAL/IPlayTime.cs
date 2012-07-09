@@ -10,6 +10,7 @@ namespace IDAL
     {
         List<PlayTime> getPlayTimeList();
         List<PlayTime> getPlayTimeList(int movieID, int cinemaID);
+        List<PlayTime> getPlayTimeList(int movieID);
         bool isExist(int movieID, int cinemaID);
         bool addNewPlaytime(PlayTime playTime);
         /// <summary>

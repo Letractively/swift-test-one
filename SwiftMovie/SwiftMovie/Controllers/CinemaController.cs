@@ -18,13 +18,16 @@ namespace SwiftMovie.Controllers
 
         public ActionResult Detail()
         {
+            int cinemaID = int.Parse(Request["id"].ToString());
+            Model.Cinema cinema = (new BLL.CinemaBLL()).getCinemaById(cinemaID);
+            ViewData["Cinema"] = cinema;
             return View();
         }
 
-        public ActionResult Detail(int id)
-        {
-            return View();
-        }
+        //public ActionResult Detail(int id)
+        //{
+        //    return View();
+        //}
 
         public ActionResult Comment(int id)
         {
