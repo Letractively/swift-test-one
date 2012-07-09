@@ -29,6 +29,7 @@
             <tr>
               <td><label>武汉常用地址 </label></td><td><select name="address"><option value="洪山区">洪山区</option><option value="黄陂区">黄陂区</option><option value="青山区">青山区</option><option value="新洲区">新洲区</option><option value="江岸区">江岸区</option><option value="江汉区">江汉区</option><option value="东西湖区">东西湖区</option><option value="蔡甸区">蔡甸区</option><option value="硚口区">硚口区</option><option value="武昌区">武昌区</option><option value="汉南区">汉南区</option><option value="江夏区">江夏区</option><option value="汉阳区">汉阳区</option></select></td>
             </tr>
+            <tr><td>我要订阅电影资讯</td><td><input name="Subscribe" type="checkbox" value="true" checked /></td></tr>
             <tr>
             <td><input name="reg" type="submit" value="注册"/></td>
             </tr>
@@ -36,7 +37,7 @@
             @{
                 if ( ViewData["isSuccess"] != null && (int)ViewData["isSuccess"] == 1 )
                 {
-                    <script>alert("注册成功！")</script>                    
+                    <script type="text/javascript">alert("注册成功！")</script>                    
                 }
             }
         </fieldset>

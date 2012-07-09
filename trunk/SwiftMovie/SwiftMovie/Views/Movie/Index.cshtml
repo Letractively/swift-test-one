@@ -3,29 +3,50 @@
 }
 
     <link href="@Url.Content("~/Content/movie.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/film1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/film2.js")" type="text/javascript"></script>
 
-
-	<div class="con"> 
-     <!--左侧评论栏-->
-		<div class="com">          
+	<div class="con">
+	
+		<!--左侧评论栏-->
+		<div class="com"> 
+		<p style="font-size:36px;color:#311111">电影の评论</p>
+		<marquee direction="up" scrollamount="2" scrolldelay="10" onmouseover="this.stop()" onmouseout="this.start()">
+		@{
+            BLL.CinecismBLL comList = new BLL.CinecismBLL();
+            foreach( Model.Cinecism item in comList.getCinecismList().Take(10) )
+            {
+                <h3>@item.UserName 说：</h3>
+                <p> @item.Comment </p>
+                <hr/>
+            }
+         }
+		</marquee>     
 		</div>
-		<div class="right">           <!--右侧影片介绍栏-->
-		
+		<!--左侧评论栏 end-->
+
+        <!--右侧影片介绍栏-->
+		<div class="right">           
 			<!--正在热映-->
 			<div class="hot">
+			<p style="font-size:18px; color:#FF9999;">正在热映</p>
 			<div id="wrap">
 				<ul>
-					<li><img src="/Content/Image/f1.jpg" alt="pic one" /></li>
-					<li><img src="/Content/Image/f2.jpg" alt="pic two" /></li>
-					<li><img src="/Content/Image/f3.jpg" alt="pic three" /></li>
-					<li><img src="/Content/Image/f4.jpg" alt="pic four" /></li>
+                @{
+                   // BLL.MovieBLL mlist = new BLL.MovieBLL();
+                    //mlist.
+                    }
+					<li><img src="../css/image/f1.jpg" alt="pic one" /></li>
+					<li><img src="../css/image/f2.jpg" alt="pic two" /></li>
+					<li><img src="../css/image/f3.jpg" alt="pic three" /></li>
+					<li><img src="../css/image/f4.jpg" alt="pic four" /></li>
 				</ul>
 			</div>
 			
-			<script src="@Url.Content("~/Script/film2.js")" type="text/javascript"></script>		
+					
 					
 			
-			正在热映
+			
 			</div>
 			
 			
@@ -36,85 +57,67 @@
 					
 					
 					<!--标题栏 start-->
-					<DIV class=FixTitle>
-					<H3>即将上映</H3><SPAN><A href="/" target=_blank>更多>></A></SPAN>
-					</DIV>
+					<div class=FixTitle>
+					<H3>即将上映</H3>
+					</div>
 					<!--标题栏 end-->
 					
-					<DIV class=blk_29>
+					<div class="blk_29">
 					
-						<DIV class=LeftBotton id=LeftArr></DIV>
-						<DIV class=Cont id=ISL_Cont_1>
+						<div class="LeftBotton" id="LeftArr"></div>
+						<div class="Cont" id="ISL_Cont_1">
 						<!-- 图片列表 begin -->
-								<DIV class=box><A class=imgBorder href="/" target=_blank><img src="../css/image/f1.jpg"
-								border=0></A> 
-								<P><A href="/" 
-								target=_blank>中国北京</A></P></DIV>
+
+								<div class=box>
+								<a class="imgBorder" href="list.html" target=_blank><img src="../css/image/f1.jpg" ></a> 
+								<p><a href="/" target=_blank>中国北京</a></p>
+                                </div>
 								
-								<DIV class=box><A class=imgBorder href="/" target=_blank><img src="../css/image/f2.jpg"  
-								border=0></A> 
-								<P><A href="/" 
-								target=_blank>生态旅游区</A></P></DIV>
+								<div class=box><A class=imgBorder href="/" target=_blank><img src="../css/image/f2.jpg"  
+								 ></A> 
+								<p><A href="/" 
+								target=_blank>生态旅游区</A></p></div>
 								
-								<DIV class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f3.jpg" 
-								border=0></A> 
-								<P><A href="/" 
-								target=_blank>奥运馆场</A></P></DIV>
+								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f3.jpg" 
+								 ></A> 
+								<p><A href="/" 
+								target=_blank>奥运馆场</A></p></div>
 								
-								<DIV class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f4.jpg"  
-								border=0></A> 
-								<P><A href="/" 
-								target=_blank>瑞典山脉</A></P></DIV>
+								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f4.jpg"  
+								 ></A> 
+								<p><A href="/" 
+								target=_blank>瑞典山脉</A></p></div>
 								
-								<DIV class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f5.jpg" 
-								border=0></A> 
-								<P><A href="/" 
-								target=_blank>体育旅游</A></P></DIV>
+								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f5.jpg" 
+								 ></A> 
+								<p><A href="/" 
+								target=_blank>体育旅游</A></p></div>
 								
-								<DIV class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f6.jpg"  
-								border=0></A> 
-								<P><A href="/" 
-								target=_blank>福建武山</A></P></DIV>
+								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f6.jpg"  
+								 ></A> 
+								<p><A href="/" 
+								target=_blank>福建武山</A></p></div>
 								
-								<DIV class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f7.jpg"  
-								border=0></A> 
-								<P><A href="/" 
-								target=_blank>中国张家界</A></P></DIV>
+								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f7.jpg"  
+								 ></A> 
+								<p><A href="/" 
+								target=_blank>中国张家界</A></p></div>
 								
-								<DIV class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f8.jpg"  
-								border=0></A> 
-								<P><A href="/" 
-								target=_blank>奥运开幕式</A></P></DIV>
+								<div class=box><A class=imgBorder href="/" target=_blank><img  src="../css/image/f8.jpg"  
+								 ></A> 
+								<p><A href="/" 
+								target=_blank>奥运开幕式</A></p></div>
 								<!-- 图片列表 end -->
-					  </DIV>
-					<DIV class=RightBotton id=RightArr><img src="../css/image/turnright.jpg"></DIV></DIV>
-					
-					
-					<script src="@Url.Content("~/Script/film2.js")" type="text/javascript"></script>
+					  </div>
+					<div class=RightBotton id=RightArr><img src="/Content/Image/turnright.jpg"></div></div>				
 					<!--滚动图片 end-->
-			
-							
+	
 			</div>
 			
-			<!--重磅推荐-->
-			<div class="rec"> 
-			
-			
-			
-			
-			
-			
-			重磅推荐
-			
-			
-			
-						           
-						
-			</div>
-			<!--重磅推荐 end-->
 			
 			
 	  </div>
 	  <!--右侧评论栏 end-->
 	  
 	</div>
+	<!--评论栏 end-->

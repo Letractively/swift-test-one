@@ -23,25 +23,34 @@ namespace SwiftMovie.Controllers
         public ActionResult Reg(FormCollection form)
         {
             BLL.UserBLL user = new BLL.UserBLL();
-            int isSuccess = 0;
+            int isSuccess ;
             isSuccess = user.register(form["username"], form["password"], form["email"], form["address"]);
+            
+
             ViewData["isSuccess"] = isSuccess;
             return View();
 
 
         }
-        // 登录
+        
         public ActionResult Login()
         { 
             return View(); 
         }
-        // 登录
+
+        
         [HttpPost]
         public ActionResult Login(FormCollection form)
         {
             BLL.UserBLL user = new BLL.UserBLL();
             bool isSuccess;
             isSuccess = user.login(form["username"], form["password"]);
+            string message;
+            if (isSuccess == true)
+            {
+                
+                
+            }
             ViewData["isSuccess"] = isSuccess;
             return View(); 
         }

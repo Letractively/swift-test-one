@@ -3,14 +3,14 @@
 .con
 {
 width:980px;
-height:950px;
+height:700px;
 
 }
 .com
 {
-
+padding:10px;
 width:250px;
-height:950px;
+height:680px;
 float:left;
 background-color:#CCCCCC;
 border-radius:10px 10px 10px 10px;
@@ -20,8 +20,7 @@ border-radius:10px 10px 10px 10px;
 {
 float:right;
 width:700px;
-height:750px;
-border:1px solid black;
+height:680px;
 }
 .hot
 {
@@ -37,12 +36,7 @@ height:320px;
 border:1px solid black;
 
 }
-.rec
-{
-width:700px;
-height:200px;
 
-}
 
 
 
@@ -75,3 +69,48 @@ height:250px;
 cursor:pointer;
 }
 
+#movie-intro
+{
+    width:auto;
+    height:250px;
+    border:1px solid #000000;
+    width:auto;
+    padding:5px 10px 5px 10px;
+}
+
+.pic
+{
+    float:left;
+    width:180px;
+    height:240px;
+    
+    }
+    
+.pic img
+{
+    max-width:180px;
+    width:180px;
+    height:240px;
+     
+}
+
+.movieinfo
+{
+    float:left;
+    padding-left:30px;
+}
+
+
+
+.playlist
+{
+    float:left;
+    width:auto;
+}
+
+.order
+{
+    float:right;
+}
+
+#play

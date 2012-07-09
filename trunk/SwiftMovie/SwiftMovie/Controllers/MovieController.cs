@@ -21,5 +21,10 @@ namespace SwiftMovie.Controllers
             return View();
         }
 
+        public ActionResult Comment()
+        {
+            return View();
+        }
+
     }
 }
