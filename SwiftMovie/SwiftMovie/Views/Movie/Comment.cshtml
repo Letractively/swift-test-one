@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "影评";
+}
+
+<link href="@Url.Content("~/Content/movie.css")" rel="stylesheet" type="text/css" />
+
+<div class="content">
+  <div class="aMovie">
+    <div class="pic"><img src="http://pic3.bbzhi.com/mingxingbizhi/ruilimoteyangmixiezhen/star_starcn_166257_2.jpg" /></div>
+    <div class="movieInfo">
+        <span><h1>马达加斯加</a></h1></span>
+        <span><h2>9分</h2></span>
+        <span>上映日期：2012年7月7日</span>
+        <hr/>
+        <p>导演：xxx</p>
+        <p>演员：xxx</p>
+        <div id="myCom">
+        <form action="" method="get">
+            <textarea autofocus="true" rows="3" name="comment" required="true">请在此吐槽~</textarea>
+            <input type="submit" value="评论" />
+        </form>
+        </div>
+    </div>
+  </div>
+
+
+    <div class="comList">
+        <div class="aComment">
+            2012-7-6 15:17:59   xiaolvzi 说：
+            <p>太失望了，骗人嘛</p>
+        </div>
+     </div>
+</div>
