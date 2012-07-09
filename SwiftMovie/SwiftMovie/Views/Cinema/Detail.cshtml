@@ -7,36 +7,42 @@
 
 
 	<!--页面主体内容-->
-<div class="content">
+
+<div class=tablist>
     <div class="navbox">
-        <ul class="nav">
+      <nav>
+        <ul id="nav">
             <li><a href="#tab1">影院信息</a></li>
             <li><a href="#tab2">周边信息</a></li>
             <li><a href="#tab3">优惠活动</a></li>
             <li><a href="#tab4">会员活动</a></li>
         </ul>
+      </nav>
     </div>
+    <div id="tabbody" class="tab_body">
     <div id="tab1" class="tab_content">
-    <div>@c.CinemaName</div>
-    @{
-        if(c.CinemaPic.Count>0)
-        {<div><img src="@c.CinemaPic[0].PicURL" /></div>}
-     }
-     <div>@c.CinemaGrade.Remove(3)</div>
-     <div>@c.CinemaTel</div>
-     <div>@c.Address</div>
+        <h1>@c.CinemaName</h1>
+        @{
+            if(c.CinemaPic.Count>0)
+            {<img src="@c.CinemaPic[0].PicURL" />}
+        }
+        <h3>@c.CinemaGrade.Remove(3)</h3>
+        <h4>@c.CinemaTel</h4>
+        <p>@c.Address</p>
     </div>
     <div id="tab2" class="tab_content">
-    <div>@c.Dining</div>
-    <div>@c.Park</div>
-    <div>@c.GameCenter</div>
-    <div>@c.Intro3D</div>
-    <div>@c.IntroVIP</div>
+        <p>@c.Dining</p>
+        <p>@c.Park</p>
+        <p>@c.GameCenter</p>
+        <p>@c.Intro3D</p>
+        <p>@c.IntroVIP</p>
     </div>
     <div id="tab3" class="tab_content">
-    <div>@c.Privilege</div>
+        @c.Privilege
     </div>
     <div id="tab4" class="tab_content">
-    <div>@c.VIP</div>
+        <p>@c.VIP</p>
     </div>
+    </div>
+
 </div>
