@@ -14,7 +14,16 @@
                     <div style="display: none;" class="excerpt">
                         @c.CinemaName
                     </div>
-                    <img title="" alt="Titanic 3d" src="@c.CinemaPic">
+                    @{
+                    if (c.CinemaPic.Count==0)
+                    {
+                         <img title="" alt="Titanic 3d" />
+                    }
+                    else
+                    { 
+                        <img title="" alt="Titanic 3d" src="@c.CinemaPic[0].PicURL"/>
+                    }
+                        }
                 </li>
                 }
             }

@@ -23,7 +23,7 @@ namespace SqlServerDAL
                 VIP=item[7].ToString(),Dining=item[8].ToString(),Park=item[9].ToString(),GameCenter=item[10].ToString(),Intro3D=item[11].ToString(),IntroVIP=item[12].ToString(),Introduce=item[13].ToString()};
                
                 List<Model.CinemaPic> cinemaPic = new List<Model.CinemaPic>();
-                DataTable picDT = DBUtility.SqlHelper.executeTable("select * from CinemaPic where CinemaID=" + int.Parse(item[0].ToString()), CommandType.Text, null);
+                DataTable picDT = DBUtility.SqlHelper.executeTable("select * from CinemaPic where CinemaID=" + emp.CinemaID, CommandType.Text, null);
                 foreach(DataRow picItem in picDT.Rows)
                 {
                     Model.CinemaPic pic = new Model.CinemaPic() { PicURL = picItem[2].ToString() };
@@ -312,7 +312,7 @@ namespace SqlServerDAL
                 {
                     foreach (DataRow item in dt.Rows)
                     {
-                        Model.CinemaPic pic = new Model.CinemaPic() { PicURL = item[0].ToString() };
+                        Model.CinemaPic pic = new Model.CinemaPic() { PicURL = item[2].ToString() };
                         pics.Add(pic);
                     }
                     cinema.CinemaPic = pics;

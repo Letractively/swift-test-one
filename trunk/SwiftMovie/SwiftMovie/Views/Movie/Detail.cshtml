@@ -4,6 +4,8 @@
 
     Model.Movie m =
     (Model.Movie)ViewData["Movie"];
+    List<Model.Cinema> cs = (List<Model.Cinema>)ViewData["Cinemas"];
+    List<Model.Play> ps = (List<Model.Play>)ViewData["Plays"];
 }
 
 <div class="information">        
@@ -12,10 +14,11 @@
 
 		</div>
 		<div class="inm">                      <!--电影简介-->
-		<dt>@m.MovieName</dt>
-		<dd>@m.RunTime 分</dd>
-		<dd>@((new Random()).Next(3000))
-        人评价</dd>
+		<dt>电影名称:&nbsp;@m.MovieName</dt>
+		<dd>导演:&nbsp;@m.Director</dd>
+        <dd>主演:&nbsp;@m.Protagonist</dd>
+        <dd>时长:&nbsp;@m.RunTime 分钟</dd>
+        <dd>上映时间:&nbsp;@m.ReleaseDate</dd>
 		</div>
 		<div class="view">                    <!--电影预告片-->
 		</div>
@@ -31,12 +34,26 @@
 	<hr>
 	
 	<div class="each">
+    @{
+        foreach (Model.Cinema c in cs)
+        {
 		<div class="tu">
-			<span>华谊兄弟影院</span>
+			<span>@c.CinemaName</span>
+            @{
+            if (c.CinemaPic.Count > 0)
+            { 
+                <dd><img src="@c.CinemaPic[0].PicURL" /></dd>
+            }
+            }
+            <dd>地址:&nbsp;@c.Address</dd>
+            <dd>电话:&nbsp;@c.CinemaTel</dd>
+            <!--
 			<img src="../css/image/use1.jpg">
+            -->
 		</div>
-		
+		    
 		<div class="item">
+        <!--
 		<p>今日最低价场次</p>
 		<table width="100" border="1">
 		  <tbody><tr>
@@ -44,35 +61,33 @@
 			<td>20元</td>
 		  </tr>
 		</tbody></table>
-		
-		<hr>
+		-->
 		<p>今日场次</p>
 		
 		<table border="1">
 		  <tbody><tr>
-			<td>6:00</td>
-			<td>20元</td>
-			<td>6:00</td>
-			<td>20元</td>
-			<td>6:00</td>
-			<td>20元</td>
-			<td>6:00</td>
-			<td>20元</td>
-		  </tr>
-		  <tr>
-			<td>6:00</td>
-			<td>20元</td>
-			<td>6:00</td>
-			<td>20元</td>
-			<td>6:00</td>
-			<td>20元</td>
-			<td>6:00</td>
-			<td>20元</td>
+         @{
+                    foreach (Model.Play p in ps)
+                    {
+                        if (p.CinemaID == c.CinemaID)
+                        {
+                            if (@p.Price == 0)
+                            {
+                        <td>@p.PlayName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+                            }
+                            else
+                            {                                          
+			            <td>@p.PlayName&nbsp;￥@p.Price</td>
+                            }
+                        }
+                    }
+            }
 		  </tr>
 		</tbody></table>
-		
-
 		</div>	
+        <hr />
+        }
+        }
 	</div><hr>
 	<!--
 	<table width="100%" border="1" class="inform">
