@@ -61,7 +61,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CinecismController.cs" />
     <Compile Include="Controllers\CinemaController.cs" />
-    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Global.asax.cs">
@@ -110,6 +109,7 @@
     <Content Include="Content\log.css" />
     <Content Include="Content\movie.css" />
     <Content Include="Content\rotate.css" />
+    <Content Include="Content\Search.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
@@ -280,7 +280,13 @@
     <Content Include="Views\Cinema\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Home\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\Comment\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Movie\Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Movie\Detail.cshtml" />

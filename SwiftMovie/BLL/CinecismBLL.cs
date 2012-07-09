@@ -5,18 +5,26 @@ using System.Text;
 
 namespace BLL
 {
-    class CinecismBLL
+    public class CinecismBLL
     {
         /// <summary>
         /// 获取电影的影评，并安时间降序排列
         /// </summary>
         /// <param name="movieID">电影的ID</param>
         /// <returns>时间降序排列的评论</returns>
+        /// 
         public List<Model.Cinecism> getCinecismById(int movieID)
         {
             IDAL.ICinecism Cinecism = DALFactory.DataAccess.createDalCinecism();
             return Cinecism.getCinecismList(movieID);
         }
+
+        public List<Model.Cinecism> getCinecismList()
+        {
+            IDAL.ICinecism Cinecism = DALFactory.DataAccess.createDalCinecism();
+            return Cinecism.getCinecismList();
+        }
+
         /// <summary>
         /// 添加一条影评
         /// </summary>
@@ -35,5 +43,8 @@ namespace BLL
             IDAL.ICinecism ICinecism = DALFactory.DataAccess.createDalCinecism();
             return ICinecism.addCinecism(Cinecism);
         }
+
+
+
     }
 }

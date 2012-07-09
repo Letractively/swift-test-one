@@ -16,18 +16,19 @@ namespace SwiftMovie.Controllers
             return View();
         }
 
+        public ActionResult Detail()
+        {
+            return View();
+        }
+
         public ActionResult Detail(int id)
         {
-            BLL.CinemaBLL aCinema = new BLL.CinemaBLL();
-            aCinema.getCinemaById(id);
-            return View(aCinema);
+            return View();
         }
 
         public ActionResult Comment(int id)
         {
-            BLL.CinemaComm CinemaComList = new BLL.CinemaComm();
-            CinemaComList.getCCommentById(id);
-            return View(CinemaComList);
+            return View();
         }
     }
 }
