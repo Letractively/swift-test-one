@@ -3,14 +3,14 @@
 .con
 {
 width:980px;
-height:700px;
+height:800px;
 
 }
 .com
 {
 padding:10px;
 width:250px;
-height:680px;
+height:600px;
 float:left;
 background-color:#CCCCCC;
 border-radius:10px 10px 10px 10px;
@@ -20,7 +20,7 @@ border-radius:10px 10px 10px 10px;
 {
 float:right;
 width:700px;
-height:680px;
+height:650px;
 }
 .hot
 {
@@ -33,20 +33,19 @@ font-size:24px;
 {
 width:700px;
 height:320px;
-border:1px solid black;
 
 }
 
 
-A 
+.right a
 {	
 TEXT-DECORATION: underline
 }
 
-A:link {	COLOR: #0051b4}
-A:visited {	COLOR: #333}
-A:hover {	COLOR: #f00}
-A:active {	COLOR: #f00}
+.right A:link {	COLOR: #0051b4}
+.right A:visited {	COLOR: #333}
+.right A:hover {	COLOR: #f00}
+.right A:active {	COLOR: #f00}
 
 
 .F14lists LI SPAN {	FONT-SIZE: 9px; COLOR: #533826}
