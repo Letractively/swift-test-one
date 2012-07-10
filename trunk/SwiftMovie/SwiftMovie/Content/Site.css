@@ -27,16 +27,19 @@ body
     padding:20px;
     height:auto;
 	font-size: 30px;
+	color:red;
 	float:left;
 	margin-top:15px;
 	padding: 15px 15px 10px 10px;
-	border:1px solid black;
+	border:1px solid silver;
+	border-radius:10px 10px 10px 10px;
+	box-shadow:2px -2px 3px rgba(0,0,0,0.1);  
     transform:rotate(-10deg);
     -ms-transform:rotate(-10deg); /* IE 9 */
     -moz-transform:rotate(-10deg); /* Firefox */
     -webkit-transform:rotate(-10deg); /* Safari and Chrome */
     -o-transform:rotate(-10deg); /* Opera */
-    text-shadow:0.2em 0.2em 0.2em blue,-0.2em -0.2em 0.2em yellow, 0.4em -0.2em 0.2em red;
+    text-shadow:0.2em 0.2em 0.2em grey,-0.2em -0.2em 0.2em yellow, 0.4em -0.2em 0.2em pink;
 }
 
 #header img
